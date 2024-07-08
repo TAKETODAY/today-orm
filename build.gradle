@@ -136,6 +136,10 @@ jacocoTestReport {
   }
 }
 
+infraJar {
+  enabled = false
+}
+
 check {
   dependsOn jacocoTestReport
 }
