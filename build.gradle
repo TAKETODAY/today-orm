@@ -45,23 +45,10 @@ apply from: "$rootDir/gradle/infra-module.gradle"
 
 repositories {
   mavenLocal()
-
-//    maven { url "https://maven.aliyun.com/repository/public" }
-//    maven { url "https://repo.huaweicloud.com/repository/maven" }
-
   mavenCentral()
-  maven {
-    url "https://repo.spring.io/milestone"
-    content {
-      // Netty 5 optional support
-      includeGroup 'io.projectreactor.netty'
-    }
-  }
-  if (version.contains('-')) {
-    maven { url "https://repo.spring.io/milestone" }
-  }
+
   if (version.endsWith('-SNAPSHOT')) {
-    maven { url "https://repo.spring.io/snapshot" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
   }
 }
 
