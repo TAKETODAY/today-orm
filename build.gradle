@@ -73,27 +73,36 @@ dependencies {
   implementation("cn.taketoday:today-aop")
   implementation("cn.taketoday:today-context")
   implementation("cn.taketoday:today-web")
+  implementation("cn.taketoday:today-framework")
+  implementation("cn.taketoday:today-starter")
+
 
   implementation("org.eclipse.persistence:org.eclipse.persistence.jpa")
   implementation("org.hibernate:hibernate-core-jakarta")
+
+  annotationProcessor("cn.taketoday:infra-configuration-processor")
+  annotationProcessor("cn.taketoday:infra-annotation-config-processor")
+
 
   compileOnly("org.graalvm.sdk:graal-sdk")
 
   testImplementation("cn.taketoday:today-aop")
   testImplementation("cn.taketoday:today-context")
   testImplementation("cn.taketoday:today-web")
-
+  testImplementation("cn.taketoday:today-test")
+  testImplementation("cn.taketoday:today-test-support")
   testImplementation("io.netty:netty-codec-http")
   testImplementation 'ch.qos.logback:logback-classic'
   testImplementation("cn.taketoday:today-core-test")
-//  testImplementation(testFixtures("cn.taketoday:today-beans"))
-//  testImplementation(testFixtures("cn.taketoday:today-context"))
-//  testImplementation(testFixtures("cn.taketoday:today-core"))
-//  testImplementation(testFixtures("cn.taketoday:today-web"))
   testImplementation("org.aspectj:aspectjweaver")
   testImplementation("org.hsqldb:hsqldb")
+  testImplementation 'com.mysql:mysql-connector-j'
+  testImplementation 'com.zaxxer:HikariCP'
   testRuntimeOnly("jakarta.xml.bind:jakarta.xml.bind-api")
 
+  testImplementation 'com.h2database:h2'
+  testImplementation 'org.postgresql:postgresql'
+  testImplementation 'org.hibernate:hibernate-envers:5.6.15.Final'
   testImplementation("org.junit.jupiter:junit-jupiter-api")
   testImplementation("org.junit.jupiter:junit-jupiter-params")
   testImplementation("org.junit.platform:junit-platform-suite-api")
