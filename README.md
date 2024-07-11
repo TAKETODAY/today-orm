@@ -8,6 +8,7 @@ For JPA , hibernate5
 [![Snapshots Deployment Status](https://github.com/TAKETODAY/today-orm/workflows/Deploy/badge.svg)](https://github.com/TAKETODAY/today-orm/actions)
 [![Multi Env Status](https://github.com/TAKETODAY/today-orm/workflows/CI/badge.svg)](https://github.com/TAKETODAY/today-orm/actions)
 [![Coverage Status](https://github.com/TAKETODAY/today-orm/workflows/Coveralls/badge.svg)](https://github.com/TAKETODAY/today-orm/actions)
+[![Coverage](https://coveralls.io/repos/github/TAKETODAY/today-orm/badge.svg)](https://coveralls.io/github/TAKETODAY/today-orm)
 
 **You ask me what the elegant code looks like? Then I have to show it!**
 
