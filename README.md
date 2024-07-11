@@ -5,9 +5,10 @@ For JPA , hibernate5
 
 ![Java17](https://img.shields.io/badge/JDK-17+-success.svg)
 [![GPLv3](https://img.shields.io/badge/License-GPLv3-blue.svg)](./LICENSE)
-[![Snapshots Deployment Status](https://github.com/TAKETODAY/today-orm/workflows/Deploy/badge.svg)](https://github.com/TAKETODAY/today-infrastructure/actions)
-[![Multi Env Status](https://github.com/TAKETODAY/today-orm/workflows/CI/badge.svg)](https://github.com/TAKETODAY/today-infrastructure/actions)
-[![Coverage Status](https://github.com/TAKETODAY/today-orm/workflows/Coveralls/badge.svg)](https://github.com/TAKETODAY/today-infrastructure/actions)
+[![Deploy](https://github.com/TAKETODAY/today-orm/actions/workflows/deploy-snapshots.yml/badge.svg)](https://github.com/TAKETODAY/today-orm/actions/workflows/deploy-snapshots.yml)
+[![Coveralls](https://github.com/TAKETODAY/today-orm/actions/workflows/coveralls.yaml/badge.svg)](https://github.com/TAKETODAY/today-orm/actions/workflows/coveralls.yaml)
+[![CI](https://github.com/TAKETODAY/today-orm/actions/workflows/multi-env.yaml/badge.svg)](https://github.com/TAKETODAY/today-orm/actions/workflows/multi-env.yaml)
+[![Coverage Status](https://coveralls.io/repos/github/TAKETODAY/today-orm/badge.svg?branch=main)](https://coveralls.io/github/TAKETODAY/today-orm?branch=main)
 
 **You ask me what the elegant code looks like? Then I have to show it!**
 
