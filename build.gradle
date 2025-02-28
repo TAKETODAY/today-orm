@@ -27,7 +27,7 @@ group = "cn.taketoday"
 
 apply plugin: 'jacoco'
 apply plugin: "java-test-fixtures"
-apply plugin: 'cn.taketoday.application'
+apply plugin: 'infra.application'
 
 ext.javadocLinks = [
     "https://docs.oracle.com/en/java/javase/17/docs/api/",
