@@ -39,8 +39,8 @@ import org.hibernate.resource.jdbc.spi.PhysicalConnectionHandlingMode;
 import java.util.HashMap;
 import java.util.Map;
 
-import cn.taketoday.lang.Nullable;
-import cn.taketoday.util.ClassUtils;
+import infra.lang.Nullable;
+import infra.util.ClassUtils;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.spi.PersistenceProvider;

@@ -55,6 +55,7 @@ repositories {
 dependencies {
   api("cn.taketoday:today-beans")
   api("cn.taketoday:today-core")
+  api("cn.taketoday:today-core-aot")
   api("cn.taketoday:today-jdbc")
   api("cn.taketoday:today-tx")
   implementation("cn.taketoday:today-aop")

@@ -17,8 +17,8 @@
 
 package cn.taketoday.orm;
 
-import cn.taketoday.dao.DataRetrievalFailureException;
-import cn.taketoday.lang.Nullable;
+import infra.dao.DataRetrievalFailureException;
+import infra.lang.Nullable;
 
 /**
  * Exception thrown if a mapped object could not be retrieved via its identifier.
@@ -58,8 +58,7 @@ public class ObjectRetrievalFailureException extends DataRetrievalFailureExcepti
    */
   public ObjectRetrievalFailureException(Class<?> persistentClass, Object identifier) {
     this(persistentClass, identifier,
-            "Object of class [" + persistentClass.getName() + "] with identifier [" + identifier + "]: not found",
-            null);
+            "Object of class [%s] with identifier [%s]: not found".formatted(persistentClass.getName(), identifier), null);
   }
 
   /**
@@ -71,9 +70,7 @@ public class ObjectRetrievalFailureException extends DataRetrievalFailureExcepti
    * @param msg the detail message
    * @param cause the source exception
    */
-  public ObjectRetrievalFailureException(
-          Class<?> persistentClass, @Nullable Object identifier, String msg, @Nullable Throwable cause) {
-
+  public ObjectRetrievalFailureException(Class<?> persistentClass, @Nullable Object identifier, String msg, @Nullable Throwable cause) {
     super(msg, cause);
     this.persistentClass = persistentClass;
     this.identifier = identifier;
@@ -101,9 +98,7 @@ public class ObjectRetrievalFailureException extends DataRetrievalFailureExcepti
    * @param msg the detail message
    * @param cause the source exception
    */
-  public ObjectRetrievalFailureException(
-          String persistentClassName, @Nullable Object identifier, String msg, @Nullable Throwable cause) {
-
+  public ObjectRetrievalFailureException(String persistentClassName, @Nullable Object identifier, String msg, @Nullable Throwable cause) {
     super(msg, cause);
     this.persistentClass = persistentClassName;
     this.identifier = identifier;

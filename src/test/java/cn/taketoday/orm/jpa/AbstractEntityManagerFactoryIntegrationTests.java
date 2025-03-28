@@ -1,8 +1,5 @@
 /*
- * Original Author -> Harry Yang (taketoday@foxmail.com) https://taketoday.cn
- * Copyright © TODAY & 2017 - 2022 All Rights Reserved.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.orm.jpa;
@@ -26,19 +23,19 @@ import org.junit.jupiter.api.BeforeEach;
 
 import javax.sql.DataSource;
 
-import cn.taketoday.beans.factory.annotation.Autowired;
-import cn.taketoday.context.ConfigurableApplicationContext;
-import cn.taketoday.context.support.ClassPathXmlApplicationContext;
-import cn.taketoday.core.io.Resource;
-import cn.taketoday.dao.DataAccessException;
-import cn.taketoday.jdbc.core.JdbcTemplate;
-import cn.taketoday.jdbc.datasource.init.ResourceDatabasePopulator;
-import cn.taketoday.lang.Nullable;
-import cn.taketoday.transaction.PlatformTransactionManager;
-import cn.taketoday.transaction.TransactionException;
-import cn.taketoday.transaction.TransactionStatus;
-import cn.taketoday.transaction.support.DefaultTransactionDefinition;
-import cn.taketoday.transaction.support.TransactionSynchronizationManager;
+import infra.beans.factory.annotation.Autowired;
+import infra.context.ConfigurableApplicationContext;
+import infra.context.support.ClassPathXmlApplicationContext;
+import infra.core.io.Resource;
+import infra.dao.DataAccessException;
+import infra.jdbc.core.JdbcTemplate;
+import infra.jdbc.datasource.init.ResourceDatabasePopulator;
+import infra.lang.Nullable;
+import infra.transaction.PlatformTransactionManager;
+import infra.transaction.TransactionException;
+import infra.transaction.TransactionStatus;
+import infra.transaction.support.DefaultTransactionDefinition;
+import infra.transaction.support.TransactionSynchronizationManager;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Query;

@@ -1,8 +1,5 @@
 /*
- * Original Author -> Harry Yang (taketoday@foxmail.com) https://taketoday.cn
- * Copyright © Harry Yang & 2017 - 2023 All Rights Reserved.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.orm.hibernate5;
@@ -47,15 +44,15 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import cn.taketoday.beans.factory.InitializingBean;
-import cn.taketoday.dao.DataAccessException;
-import cn.taketoday.dao.InvalidDataAccessApiUsageException;
-import cn.taketoday.lang.Assert;
-import cn.taketoday.lang.Nullable;
-import cn.taketoday.logging.Logger;
-import cn.taketoday.logging.LoggerFactory;
-import cn.taketoday.transaction.support.ResourceHolderSupport;
-import cn.taketoday.transaction.support.TransactionSynchronizationManager;
+import infra.beans.factory.InitializingBean;
+import infra.dao.DataAccessException;
+import infra.dao.InvalidDataAccessApiUsageException;
+import infra.lang.Assert;
+import infra.lang.Nullable;
+import infra.logging.Logger;
+import infra.logging.LoggerFactory;
+import infra.transaction.support.ResourceHolderSupport;
+import infra.transaction.support.TransactionSynchronizationManager;
 import jakarta.persistence.PersistenceException;
 import jakarta.persistence.StoredProcedureQuery;
 import jakarta.persistence.criteria.CriteriaDelete;
@@ -65,7 +62,7 @@ import jakarta.persistence.criteria.CriteriaUpdate;
 /**
  * Helper class that simplifies Hibernate data access code. Automatically
  * converts HibernateExceptions into DataAccessExceptions, following the
- * {@code cn.taketoday.dao} exception hierarchy.
+ * {@code infra.dao} exception hierarchy.
  *
  * <p>The central method is {@code execute}, supporting Hibernate access code
  * implementing the {@link HibernateCallback} interface. It provides Hibernate Session
@@ -222,7 +219,7 @@ public class HibernateTemplate implements HibernateOperations, InitializingBean 
    * on a Session with flush mode MANUAL.
    *
    * @see #checkWriteOperationAllowed
-   * @see cn.taketoday.transaction.TransactionDefinition#isReadOnly
+   * @see infra.transaction.TransactionDefinition#isReadOnly
    */
   public void setCheckWriteOperations(boolean checkWriteOperations) {
     this.checkWriteOperations = checkWriteOperations;

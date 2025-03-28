@@ -1,8 +1,5 @@
 /*
- * Original Author -> Harry Yang (taketoday@foxmail.com) https://taketoday.cn
- * Copyright © TODAY & 2017 - 2022 All Rights Reserved.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,35 +12,35 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.orm.jpa;
 
 import java.util.Map;
 
-import cn.taketoday.beans.factory.BeanFactory;
-import cn.taketoday.beans.factory.BeanFactoryUtils;
-import cn.taketoday.beans.factory.NoSuchBeanDefinitionException;
-import cn.taketoday.core.Ordered;
-import cn.taketoday.dao.CannotAcquireLockException;
-import cn.taketoday.dao.DataAccessException;
-import cn.taketoday.dao.DataAccessResourceFailureException;
-import cn.taketoday.dao.DataIntegrityViolationException;
-import cn.taketoday.dao.EmptyResultDataAccessException;
-import cn.taketoday.dao.IncorrectResultSizeDataAccessException;
-import cn.taketoday.dao.InvalidDataAccessApiUsageException;
-import cn.taketoday.dao.PessimisticLockingFailureException;
-import cn.taketoday.jdbc.datasource.DataSourceUtils;
-import cn.taketoday.lang.Assert;
-import cn.taketoday.lang.Nullable;
-import cn.taketoday.logging.Logger;
-import cn.taketoday.logging.LoggerFactory;
-import cn.taketoday.transaction.support.ResourceHolderSynchronization;
-import cn.taketoday.transaction.support.SynchronizationInfo;
-import cn.taketoday.transaction.support.TransactionSynchronizationManager;
-import cn.taketoday.util.CollectionUtils;
-import cn.taketoday.util.StringUtils;
+import infra.beans.factory.BeanFactory;
+import infra.beans.factory.BeanFactoryUtils;
+import infra.beans.factory.NoSuchBeanDefinitionException;
+import infra.core.Ordered;
+import infra.dao.CannotAcquireLockException;
+import infra.dao.DataAccessException;
+import infra.dao.DataAccessResourceFailureException;
+import infra.dao.DataIntegrityViolationException;
+import infra.dao.EmptyResultDataAccessException;
+import infra.dao.IncorrectResultSizeDataAccessException;
+import infra.dao.InvalidDataAccessApiUsageException;
+import infra.dao.PessimisticLockingFailureException;
+import infra.jdbc.datasource.DataSourceUtils;
+import infra.lang.Assert;
+import infra.lang.Nullable;
+import infra.logging.Logger;
+import infra.logging.LoggerFactory;
+import infra.transaction.support.ResourceHolderSynchronization;
+import infra.transaction.support.SynchronizationInfo;
+import infra.transaction.support.TransactionSynchronizationManager;
+import infra.util.CollectionUtils;
+import infra.util.StringUtils;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -76,7 +73,7 @@ public abstract class EntityManagerFactoryUtils {
    * EntityManagers. Return DataSourceUtils.CONNECTION_SYNCHRONIZATION_ORDER - 100
    * to execute EntityManager cleanup before JDBC Connection cleanup, if any.
    *
-   * @see cn.taketoday.jdbc.datasource.DataSourceUtils#CONNECTION_SYNCHRONIZATION_ORDER
+   * @see infra.jdbc.datasource.DataSourceUtils#CONNECTION_SYNCHRONIZATION_ORDER
    */
   public static final int ENTITY_MANAGER_SYNCHRONIZATION_ORDER =
           DataSourceUtils.CONNECTION_SYNCHRONIZATION_ORDER - 100;
@@ -360,7 +357,7 @@ public abstract class EntityManagerFactoryUtils {
 
   /**
    * Convert the given runtime exception to an appropriate exception from the
-   * {@code cn.taketoday.dao} hierarchy.
+   * {@code infra.dao} hierarchy.
    * Return null if no translation is appropriate: any other exception may
    * have resulted from user code, and should not be translated.
    * <p>The most important cases like object not found or optimistic locking failure
@@ -393,7 +390,7 @@ public abstract class EntityManagerFactoryUtils {
       return new IncorrectResultSizeDataAccessException(ex.getMessage(), 1, ex);
     }
     if (ex instanceof QueryTimeoutException) {
-      return new cn.taketoday.dao.QueryTimeoutException(ex.getMessage(), ex);
+      return new infra.dao.QueryTimeoutException(ex.getMessage(), ex);
     }
     if (ex instanceof LockTimeoutException) {
       return new CannotAcquireLockException(ex.getMessage(), ex);
@@ -447,7 +444,7 @@ public abstract class EntityManagerFactoryUtils {
    * (e.g. when participating in a JtaTransactionManager transaction),
    * fully synchronized with the ongoing transaction.
    *
-   * @see cn.taketoday.transaction.jta.JtaTransactionManager
+   * @see infra.transaction.jta.JtaTransactionManager
    */
   private static class TransactionalEntityManagerSynchronization
           extends ResourceHolderSynchronization<EntityManagerHolder, EntityManagerFactory>
@@ -467,7 +464,7 @@ public abstract class EntityManagerFactoryUtils {
       super(emHolder, emf);
       this.transactionData = txData;
       this.jpaDialect = emf instanceof EntityManagerFactoryInfo info
-                        ? info.getJpaDialect() : null;
+              ? info.getJpaDialect() : null;
       this.newEntityManager = newEm;
     }
 

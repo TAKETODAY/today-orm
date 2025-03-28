@@ -25,10 +25,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.engine.spi.SessionImplementor;
 
-import cn.taketoday.core.Ordered;
-import cn.taketoday.dao.DataAccessException;
-import cn.taketoday.transaction.support.TransactionSynchronization;
-import cn.taketoday.transaction.support.TransactionSynchronizationManager;
+import infra.core.Ordered;
+import infra.dao.DataAccessException;
+import infra.transaction.support.TransactionSynchronization;
+import infra.transaction.support.TransactionSynchronizationManager;
 
 /**
  * Callback for resource cleanup at the end of a Framework-managed transaction

@@ -22,9 +22,9 @@ package cn.taketoday.orm.jpa;
 
 import org.junit.jupiter.api.Test;
 
-import cn.taketoday.transaction.TransactionDefinition;
-import cn.taketoday.transaction.TransactionException;
-import cn.taketoday.transaction.support.DefaultTransactionDefinition;
+import infra.transaction.TransactionDefinition;
+import infra.transaction.TransactionException;
+import infra.transaction.support.DefaultTransactionDefinition;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.OptimisticLockException;

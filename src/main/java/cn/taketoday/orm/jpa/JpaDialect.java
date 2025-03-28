@@ -1,8 +1,5 @@
 /*
- * Original Author -> Harry Yang (taketoday@foxmail.com) https://taketoday.cn
- * Copyright © TODAY & 2017 - 2022 All Rights Reserved.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,18 +12,18 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.orm.jpa;
 
 import java.sql.SQLException;
 
-import cn.taketoday.dao.support.PersistenceExceptionTranslator;
-import cn.taketoday.jdbc.datasource.ConnectionHandle;
-import cn.taketoday.lang.Nullable;
-import cn.taketoday.transaction.TransactionDefinition;
-import cn.taketoday.transaction.TransactionException;
+import infra.dao.support.PersistenceExceptionTranslator;
+import infra.jdbc.datasource.ConnectionHandle;
+import infra.lang.Nullable;
+import infra.transaction.TransactionDefinition;
+import infra.transaction.TransactionException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceException;
 
@@ -69,20 +66,20 @@ public interface JpaDialect extends PersistenceExceptionTranslator {
    * (effectively using the current transaction name as use case identifier).
    * <p>This method also allows for exposing savepoint capabilities if supported by
    * the persistence provider, through returning an Object that implements Framework's
-   * {@link cn.taketoday.transaction.SavepointManager} interface.
+   * {@link infra.transaction.SavepointManager} interface.
    * {@link JpaTransactionManager} will use this capability if needed.
    *
    * @param entityManager the EntityManager to begin a JPA transaction on
    * @param definition the Framework transaction definition that defines semantics
    * @return an arbitrary object that holds transaction data, if any
    * (to be passed into {@link #cleanupTransaction}). May implement the
-   * {@link cn.taketoday.transaction.SavepointManager} interface.
+   * {@link infra.transaction.SavepointManager} interface.
    * @throws PersistenceException if thrown by JPA methods
    * @throws SQLException if thrown by JDBC methods
-   * @throws cn.taketoday.transaction.TransactionException in case of invalid arguments
+   * @throws infra.transaction.TransactionException in case of invalid arguments
    * @see #cleanupTransaction
    * @see jakarta.persistence.EntityTransaction#begin
-   * @see cn.taketoday.jdbc.datasource.DataSourceUtils#prepareConnectionForTransaction
+   * @see infra.jdbc.datasource.DataSourceUtils#prepareConnectionForTransaction
    */
   @Nullable
   Object beginTransaction(EntityManager entityManager, TransactionDefinition definition)
@@ -122,7 +119,7 @@ public interface JpaDialect extends PersistenceExceptionTranslator {
    * @param transactionData arbitrary object that holds transaction data, if any
    * (as returned by beginTransaction or prepareTransaction)
    * @see #beginTransaction
-   * @see cn.taketoday.jdbc.datasource.DataSourceUtils#resetConnectionAfterTransaction
+   * @see infra.jdbc.datasource.DataSourceUtils#resetConnectionAfterTransaction
    */
   void cleanupTransaction(@Nullable Object transactionData);
 
@@ -153,8 +150,8 @@ public interface JpaDialect extends PersistenceExceptionTranslator {
    * @throws PersistenceException if thrown by JPA methods
    * @throws SQLException if thrown by JDBC methods
    * @see #releaseJdbcConnection
-   * @see cn.taketoday.jdbc.datasource.ConnectionHandle#getConnection
-   * @see cn.taketoday.jdbc.datasource.SimpleConnectionHandle
+   * @see infra.jdbc.datasource.ConnectionHandle#getConnection
+   * @see infra.jdbc.datasource.SimpleConnectionHandle
    * @see JpaTransactionManager#setDataSource
    */
   @Nullable

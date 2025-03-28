@@ -1,8 +1,5 @@
 /*
- * Original Author -> Harry Yang (taketoday@foxmail.com) https://taketoday.cn
- * Copyright © Harry Yang & 2017 - 2023 All Rights Reserved.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.orm.jpa.support;
@@ -31,19 +28,19 @@ import java.lang.reflect.Proxy;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-import cn.taketoday.aot.hint.FieldHint;
-import cn.taketoday.aot.hint.TypeReference;
-import cn.taketoday.aot.test.generate.TestGenerationContext;
-import cn.taketoday.beans.factory.aot.BeanRegistrationAotContribution;
-import cn.taketoday.beans.factory.aot.BeanRegistrationCode;
-import cn.taketoday.beans.factory.support.RegisteredBean;
-import cn.taketoday.beans.factory.support.RootBeanDefinition;
-import cn.taketoday.beans.factory.support.StandardBeanFactory;
-import cn.taketoday.core.test.tools.CompileWithForkedClassLoader;
-import cn.taketoday.core.test.tools.Compiled;
-import cn.taketoday.core.test.tools.TestCompiler;
-import cn.taketoday.lang.Nullable;
-import cn.taketoday.util.ReflectionUtils;
+import infra.aot.hint.FieldHint;
+import infra.aot.hint.TypeReference;
+import infra.aot.test.generate.TestGenerationContext;
+import infra.beans.factory.aot.BeanRegistrationAotContribution;
+import infra.beans.factory.aot.BeanRegistrationCode;
+import infra.beans.factory.support.RegisteredBean;
+import infra.beans.factory.support.RootBeanDefinition;
+import infra.beans.factory.support.StandardBeanFactory;
+import infra.core.test.tools.CompileWithForkedClassLoader;
+import infra.core.test.tools.Compiled;
+import infra.core.test.tools.TestCompiler;
+import infra.lang.Nullable;
+import infra.util.ReflectionUtils;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.PersistenceContext;

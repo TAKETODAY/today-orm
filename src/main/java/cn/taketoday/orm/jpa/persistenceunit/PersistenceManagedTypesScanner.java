@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 - 2023 the original author or authors.
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,21 +25,21 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import cn.taketoday.context.index.CandidateComponentsIndex;
-import cn.taketoday.context.index.CandidateComponentsIndexLoader;
-import cn.taketoday.core.io.PatternResourceLoader;
-import cn.taketoday.core.io.Resource;
-import cn.taketoday.core.io.ResourceLoader;
-import cn.taketoday.core.type.classreading.CachingMetadataReaderFactory;
-import cn.taketoday.core.type.classreading.ClassFormatException;
-import cn.taketoday.core.type.classreading.MetadataReader;
-import cn.taketoday.core.type.classreading.MetadataReaderFactory;
-import cn.taketoday.core.type.filter.AnnotationTypeFilter;
-import cn.taketoday.core.type.filter.TypeFilter;
-import cn.taketoday.lang.Nullable;
-import cn.taketoday.lang.TodayStrategies;
-import cn.taketoday.util.ClassUtils;
-import cn.taketoday.util.ResourceUtils;
+import infra.context.index.CandidateComponentsIndex;
+import infra.context.index.CandidateComponentsIndexLoader;
+import infra.core.io.PatternResourceLoader;
+import infra.core.io.Resource;
+import infra.core.io.ResourceLoader;
+import infra.core.type.classreading.CachingMetadataReaderFactory;
+import infra.core.type.classreading.ClassFormatException;
+import infra.core.type.classreading.MetadataReader;
+import infra.core.type.classreading.MetadataReaderFactory;
+import infra.core.type.filter.AnnotationTypeFilter;
+import infra.core.type.filter.TypeFilter;
+import infra.lang.Nullable;
+import infra.lang.TodayStrategies;
+import infra.util.ClassUtils;
+import infra.util.ResourceUtils;
 import jakarta.persistence.Converter;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;

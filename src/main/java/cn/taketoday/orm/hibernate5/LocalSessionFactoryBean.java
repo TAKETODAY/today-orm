@@ -1,8 +1,5 @@
 /*
- * Original Author -> Harry Yang (taketoday@foxmail.com) https://taketoday.cn
- * Copyright © TODAY & 2017 - 2022 All Rights Reserved.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.orm.hibernate5;
@@ -39,21 +36,21 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
-import cn.taketoday.beans.factory.BeanFactory;
-import cn.taketoday.beans.factory.BeanFactoryAware;
-import cn.taketoday.beans.factory.DisposableBean;
-import cn.taketoday.beans.factory.FactoryBean;
-import cn.taketoday.beans.factory.InitializingBean;
-import cn.taketoday.beans.factory.config.ConfigurableBeanFactory;
-import cn.taketoday.context.ResourceLoaderAware;
-import cn.taketoday.core.io.ClassPathResource;
-import cn.taketoday.core.io.PathMatchingPatternResourceLoader;
-import cn.taketoday.core.io.PatternResourceLoader;
-import cn.taketoday.core.io.Resource;
-import cn.taketoday.core.io.ResourceLoader;
-import cn.taketoday.core.task.AsyncTaskExecutor;
-import cn.taketoday.core.type.filter.TypeFilter;
-import cn.taketoday.lang.Nullable;
+import infra.beans.factory.BeanFactory;
+import infra.beans.factory.BeanFactoryAware;
+import infra.beans.factory.DisposableBean;
+import infra.beans.factory.FactoryBean;
+import infra.beans.factory.InitializingBean;
+import infra.beans.factory.config.ConfigurableBeanFactory;
+import infra.context.ResourceLoaderAware;
+import infra.core.io.ClassPathResource;
+import infra.core.io.PathMatchingPatternResourceLoader;
+import infra.core.io.PatternResourceLoader;
+import infra.core.io.Resource;
+import infra.core.io.ResourceLoader;
+import infra.core.task.AsyncTaskExecutor;
+import infra.core.type.filter.TypeFilter;
+import infra.lang.Nullable;
 
 /**
  * {@link FactoryBean} that creates a Hibernate {@link SessionFactory}. This is the usual
@@ -291,7 +288,7 @@ public class LocalSessionFactoryBean extends HibernateExceptionTranslator
   }
 
   /**
-   * Set the Framework {@link cn.taketoday.transaction.jta.JtaTransactionManager}
+   * Set the Framework {@link infra.transaction.jta.JtaTransactionManager}
    * or the JTA {@link jakarta.transaction.TransactionManager} to be used with Hibernate,
    * if any. Implicitly sets up {@code JtaPlatform}.
    *
@@ -390,7 +387,7 @@ public class LocalSessionFactoryBean extends HibernateExceptionTranslator
   /**
    * Specify packages to search for autodetection of your entity classes in the
    * classpath. This is analogous to Framework's component-scan feature
-   * ({@link cn.taketoday.context.annotation.ClassPathBeanDefinitionScanner}).
+   * ({@link infra.context.annotation.ClassPathBeanDefinitionScanner}).
    */
   public void setPackagesToScan(String... packagesToScan) {
     this.packagesToScan = packagesToScan;
@@ -398,7 +395,7 @@ public class LocalSessionFactoryBean extends HibernateExceptionTranslator
 
   /**
    * Specify an asynchronous executor for background bootstrapping,
-   * e.g. a {@link cn.taketoday.core.task.SimpleAsyncTaskExecutor}.
+   * e.g. a {@link infra.core.task.SimpleAsyncTaskExecutor}.
    * <p>{@code SessionFactory} initialization will then switch into background
    * bootstrap mode, with a {@code SessionFactory} proxy immediately returned for
    * injection purposes instead of waiting for Hibernate's bootstrapping to complete.

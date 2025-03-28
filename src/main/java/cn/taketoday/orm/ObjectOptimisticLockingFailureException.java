@@ -17,8 +17,8 @@
 
 package cn.taketoday.orm;
 
-import cn.taketoday.dao.OptimisticLockingFailureException;
-import cn.taketoday.lang.Nullable;
+import infra.dao.OptimisticLockingFailureException;
+import infra.lang.Nullable;
 
 /**
  * Exception thrown on an optimistic locking violation for a mapped object.

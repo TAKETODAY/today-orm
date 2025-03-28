@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 - 2023 the original author or authors.
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -12,7 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.orm.jpa.vendor;
@@ -47,30 +47,30 @@ import org.hibernate.exception.SQLGrammarException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import cn.taketoday.dao.CannotAcquireLockException;
-import cn.taketoday.dao.DataAccessException;
-import cn.taketoday.dao.DataAccessResourceFailureException;
-import cn.taketoday.dao.DataIntegrityViolationException;
-import cn.taketoday.dao.DuplicateKeyException;
-import cn.taketoday.dao.IncorrectResultSizeDataAccessException;
-import cn.taketoday.dao.InvalidDataAccessApiUsageException;
-import cn.taketoday.dao.InvalidDataAccessResourceUsageException;
-import cn.taketoday.dao.PessimisticLockingFailureException;
-import cn.taketoday.jdbc.datasource.ConnectionHandle;
-import cn.taketoday.jdbc.datasource.DataSourceUtils;
-import cn.taketoday.jdbc.support.SQLExceptionSubclassTranslator;
-import cn.taketoday.jdbc.support.SQLExceptionTranslator;
-import cn.taketoday.lang.Nullable;
+import infra.jdbc.datasource.ConnectionHandle;
+import infra.jdbc.datasource.DataSourceUtils;
+import infra.jdbc.support.SQLExceptionSubclassTranslator;
+import infra.jdbc.support.SQLExceptionTranslator;
 import cn.taketoday.orm.ObjectOptimisticLockingFailureException;
 import cn.taketoday.orm.ObjectRetrievalFailureException;
 import cn.taketoday.orm.jpa.DefaultJpaDialect;
 import cn.taketoday.orm.jpa.EntityManagerFactoryUtils;
 import cn.taketoday.orm.jpa.JpaSystemException;
-import cn.taketoday.transaction.InvalidIsolationLevelException;
-import cn.taketoday.transaction.TransactionDefinition;
-import cn.taketoday.transaction.TransactionException;
-import cn.taketoday.transaction.support.ResourceTransactionDefinition;
-import cn.taketoday.util.ReflectionUtils;
+import infra.dao.CannotAcquireLockException;
+import infra.dao.DataAccessException;
+import infra.dao.DataAccessResourceFailureException;
+import infra.dao.DataIntegrityViolationException;
+import infra.dao.DuplicateKeyException;
+import infra.dao.IncorrectResultSizeDataAccessException;
+import infra.dao.InvalidDataAccessApiUsageException;
+import infra.dao.InvalidDataAccessResourceUsageException;
+import infra.dao.PessimisticLockingFailureException;
+import infra.lang.Nullable;
+import infra.transaction.InvalidIsolationLevelException;
+import infra.transaction.TransactionDefinition;
+import infra.transaction.TransactionException;
+import infra.transaction.support.ResourceTransactionDefinition;
+import infra.util.ReflectionUtils;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceException;
 
@@ -136,8 +136,8 @@ public class HibernateJpaDialect extends DefaultJpaDialect {
    * this can be reverted to pre-6.1 behavior through setting {@code null} here.
    * @see java.sql.SQLException
    * @see org.hibernate.JDBCException
-   * @see cn.taketoday.jdbc.support.SQLExceptionSubclassTranslator
-   * @see cn.taketoday.jdbc.support.SQLErrorCodeSQLExceptionTranslator
+   * @see infra.jdbc.support.SQLExceptionSubclassTranslator
+   * @see infra.jdbc.support.SQLErrorCodeSQLExceptionTranslator
    */
   public void setJdbcExceptionTranslator(@Nullable SQLExceptionTranslator exceptionTranslator) {
     this.jdbcExceptionTranslator = exceptionTranslator;
@@ -248,7 +248,7 @@ public class HibernateJpaDialect extends DefaultJpaDialect {
 
   /**
    * Convert the given HibernateException to an appropriate exception
-   * from the {@code cn.taketoday.dao} hierarchy.
+   * from the {@code infra.dao} hierarchy.
    *
    * @param ex the HibernateException that occurred
    * @return the corresponding DataAccessException instance
@@ -278,7 +278,7 @@ public class HibernateJpaDialect extends DefaultJpaDialect {
       return new InvalidDataAccessResourceUsageException(ex.getMessage() + "; SQL [" + hibEx.getSQL() + "]", ex);
     }
     if (ex instanceof QueryTimeoutException hibEx) {
-      return new cn.taketoday.dao.QueryTimeoutException(ex.getMessage() + "; SQL [" + hibEx.getSQL() + "]", ex);
+      return new infra.dao.QueryTimeoutException(ex.getMessage() + "; SQL [" + hibEx.getSQL() + "]", ex);
     }
     if (ex instanceof LockAcquisitionException hibEx) {
       return new CannotAcquireLockException(ex.getMessage() + "; SQL [" + hibEx.getSQL() + "]", ex);

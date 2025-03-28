@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 - 2023 the original author or authors.
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -12,7 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.orm.hibernate5;
@@ -20,11 +20,11 @@ package cn.taketoday.orm.hibernate5;
 import org.hibernate.HibernateException;
 import org.hibernate.JDBCException;
 
-import cn.taketoday.dao.DataAccessException;
-import cn.taketoday.dao.support.PersistenceExceptionTranslator;
-import cn.taketoday.jdbc.support.SQLExceptionTranslator;
-import cn.taketoday.lang.Nullable;
+import infra.jdbc.support.SQLExceptionTranslator;
 import cn.taketoday.orm.jpa.EntityManagerFactoryUtils;
+import infra.dao.DataAccessException;
+import infra.dao.support.PersistenceExceptionTranslator;
+import infra.lang.Nullable;
 import jakarta.persistence.PersistenceException;
 
 /**
@@ -39,7 +39,7 @@ import jakarta.persistence.PersistenceException;
  * of this type must be registered manually.
  *
  * @author Juergen Hoeller
- * @see cn.taketoday.dao.annotation.PersistenceExceptionTranslationPostProcessor
+ * @see infra.dao.annotation.PersistenceExceptionTranslationPostProcessor
  * @see SessionFactoryUtils#convertHibernateAccessException(HibernateException)
  * @see EntityManagerFactoryUtils#convertJpaAccessExceptionIfPossible(RuntimeException)
  * @since 4.0
@@ -57,8 +57,8 @@ public class HibernateExceptionTranslator implements PersistenceExceptionTransla
    *
    * @see java.sql.SQLException
    * @see JDBCException
-   * @see cn.taketoday.jdbc.support.SQLErrorCodeSQLExceptionTranslator
-   * @see cn.taketoday.jdbc.support.SQLStateSQLExceptionTranslator
+   * @see infra.jdbc.support.SQLErrorCodeSQLExceptionTranslator
+   * @see infra.jdbc.support.SQLStateSQLExceptionTranslator
    * @since 4.0
    */
   public void setJdbcExceptionTranslator(SQLExceptionTranslator jdbcExceptionTranslator) {
@@ -82,7 +82,7 @@ public class HibernateExceptionTranslator implements PersistenceExceptionTransla
 
   /**
    * Convert the given HibernateException to an appropriate exception from the
-   * {@code cn.taketoday.dao} hierarchy.
+   * {@code infra.dao} hierarchy.
    * <p>Will automatically apply a specified SQLExceptionTranslator to a
    * Hibernate JDBCException, otherwise rely on Hibernate's default translation.
    *

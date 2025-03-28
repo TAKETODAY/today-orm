@@ -1,4 +1,4 @@
-cn.taketoday.beans.factory.aot.BeanRegistrationAotProcessor=\
+infra.beans.factory.aot.BeanRegistrationAotProcessor=\
 cn.taketoday.orm.jpa.persistenceunit.PersistenceManagedTypesBeanRegistrationAotProcessor
 
 cn.taketoday.aot.hint.RuntimeHintsRegistrar=\

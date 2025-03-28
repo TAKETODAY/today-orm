@@ -1,8 +1,5 @@
 /*
- * Original Author -> Harry Yang (taketoday@foxmail.com) https://taketoday.cn
- * Copyright © Harry Yang & 2017 - 2023 All Rights Reserved.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.orm.jpa.support;
@@ -30,20 +27,20 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import cn.taketoday.beans.factory.FactoryBean;
-import cn.taketoday.beans.factory.support.RootBeanDefinition;
-import cn.taketoday.beans.factory.support.StandardBeanFactory;
-import cn.taketoday.context.support.GenericApplicationContext;
 import cn.taketoday.context.testfixture.SimpleMapScope;
 import cn.taketoday.context.testfixture.jndi.ExpectedLookupTemplate;
-import cn.taketoday.core.testfixture.io.SerializationTestUtils;
-import cn.taketoday.lang.Nullable;
 import cn.taketoday.orm.jpa.AbstractEntityManagerFactoryBeanTests;
 import cn.taketoday.orm.jpa.DefaultJpaDialect;
 import cn.taketoday.orm.jpa.EntityManagerFactoryInfo;
 import cn.taketoday.orm.jpa.EntityManagerHolder;
-import cn.taketoday.stereotype.Repository;
-import cn.taketoday.transaction.support.TransactionSynchronizationManager;
+import infra.beans.factory.FactoryBean;
+import infra.beans.factory.support.RootBeanDefinition;
+import infra.beans.factory.support.StandardBeanFactory;
+import infra.context.support.GenericApplicationContext;
+import infra.core.testfixture.io.SerializationTestUtils;
+import infra.lang.Nullable;
+import infra.stereotype.Repository;
+import infra.transaction.support.TransactionSynchronizationManager;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.PersistenceContext;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 - 2023 the original author or authors.
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -12,7 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.orm.hibernate5;
@@ -33,32 +33,32 @@ import java.util.function.Consumer;
 
 import javax.sql.DataSource;
 
-import cn.taketoday.beans.BeansException;
-import cn.taketoday.beans.factory.BeanFactory;
-import cn.taketoday.beans.factory.BeanFactoryAware;
-import cn.taketoday.beans.factory.InitializingBean;
-import cn.taketoday.dao.DataAccessException;
-import cn.taketoday.dao.DataAccessResourceFailureException;
-import cn.taketoday.jdbc.datasource.ConnectionHolder;
-import cn.taketoday.jdbc.datasource.DataSourceUtils;
-import cn.taketoday.jdbc.datasource.JdbcTransactionObjectSupport;
-import cn.taketoday.jdbc.datasource.TransactionAwareDataSourceProxy;
-import cn.taketoday.lang.Assert;
-import cn.taketoday.lang.Nullable;
-import cn.taketoday.transaction.CannotCreateTransactionException;
-import cn.taketoday.transaction.IllegalTransactionStateException;
-import cn.taketoday.transaction.InvalidIsolationLevelException;
-import cn.taketoday.transaction.TransactionDefinition;
-import cn.taketoday.transaction.TransactionSystemException;
-import cn.taketoday.transaction.support.AbstractPlatformTransactionManager;
-import cn.taketoday.transaction.support.DefaultTransactionStatus;
-import cn.taketoday.transaction.support.ResourceTransactionManager;
-import cn.taketoday.transaction.support.SynchronizationInfo;
-import cn.taketoday.transaction.support.TransactionSynchronizationManager;
+import infra.beans.BeansException;
+import infra.beans.factory.BeanFactory;
+import infra.beans.factory.BeanFactoryAware;
+import infra.beans.factory.InitializingBean;
+import infra.jdbc.datasource.ConnectionHolder;
+import infra.jdbc.datasource.DataSourceUtils;
+import infra.jdbc.datasource.JdbcTransactionObjectSupport;
+import infra.jdbc.datasource.TransactionAwareDataSourceProxy;
+import infra.dao.DataAccessException;
+import infra.dao.DataAccessResourceFailureException;
+import infra.lang.Assert;
+import infra.lang.Nullable;
+import infra.transaction.CannotCreateTransactionException;
+import infra.transaction.IllegalTransactionStateException;
+import infra.transaction.InvalidIsolationLevelException;
+import infra.transaction.TransactionDefinition;
+import infra.transaction.TransactionSystemException;
+import infra.transaction.support.AbstractPlatformTransactionManager;
+import infra.transaction.support.DefaultTransactionStatus;
+import infra.transaction.support.ResourceTransactionManager;
+import infra.transaction.support.SynchronizationInfo;
+import infra.transaction.support.TransactionSynchronizationManager;
 import jakarta.persistence.PersistenceException;
 
 /**
- * {@link cn.taketoday.transaction.PlatformTransactionManager}
+ * {@link infra.transaction.PlatformTransactionManager}
  * implementation for a single Hibernate {@link SessionFactory}.
  * Binds a Hibernate Session from the specified factory to the thread,
  * potentially allowing for one thread-bound Session per factory.
@@ -75,16 +75,16 @@ import jakarta.persistence.PersistenceException;
  * with the same DataSource). This allows for mixing services which access Hibernate
  * and services which use plain JDBC (without being aware of Hibernate)!
  * Application code needs to stick to the same simple Connection lookup pattern as
- * with {@link cn.taketoday.jdbc.datasource.DataSourceTransactionManager}
- * (i.e. {@link cn.taketoday.jdbc.datasource.DataSourceUtils#getConnection}
+ * with {@link infra.jdbc.datasource.DataSourceTransactionManager}
+ * (i.e. {@link infra.jdbc.datasource.DataSourceUtils#getConnection}
  * or going through a
- * {@link cn.taketoday.jdbc.datasource.TransactionAwareDataSourceProxy}).
+ * {@link infra.jdbc.datasource.TransactionAwareDataSourceProxy}).
  *
  * <p>Note: To be able to register a DataSource's Connection for plain JDBC code,
  * this instance needs to be aware of the DataSource ({@link #setDataSource}).
  * The given DataSource should obviously match the one used by the given SessionFactory.
  *
- * <p>JTA (usually through {@link cn.taketoday.transaction.jta.JtaTransactionManager})
+ * <p>JTA (usually through {@link infra.transaction.jta.JtaTransactionManager})
  * is necessary for accessing multiple transactional resources within the same
  * transaction. The DataSource that Hibernate uses needs to be JTA-enabled in
  * such a scenario (see container setup).
@@ -105,9 +105,9 @@ import jakarta.persistence.PersistenceException;
  * @see SessionFactory#getCurrentSession()
  * @see DataSourceUtils#getConnection
  * @see DataSourceUtils#releaseConnection
- * @see cn.taketoday.jdbc.core.JdbcTemplate
- * @see cn.taketoday.jdbc.support.JdbcTransactionManager
- * @see cn.taketoday.transaction.jta.JtaTransactionManager
+ * @see infra.jdbc.core.JdbcTemplate
+ * @see infra.jdbc.support.JdbcTransactionManager
+ * @see infra.transaction.jta.JtaTransactionManager
  * @since 4.0
  */
 @SuppressWarnings("serial")
@@ -206,7 +206,7 @@ public class HibernateTransactionManager extends AbstractPlatformTransactionMana
    * unwrapped to extract its target DataSource.
    * <p><b>NOTE: For scenarios with many transactions that just read data from
    * Hibernate's cache (and do not actually access the database), consider using
-   * a {@link cn.taketoday.jdbc.datasource.LazyConnectionDataSourceProxy}
+   * a {@link infra.jdbc.datasource.LazyConnectionDataSourceProxy}
    * for the actual target DataSource. Alternatively, consider switching
    * {@link #setPrepareConnection "prepareConnection"} to {@code false}.</b>
    * In both cases, this transaction manager will not eagerly acquire a
@@ -214,8 +214,8 @@ public class HibernateTransactionManager extends AbstractPlatformTransactionMana
    *
    * @see #setAutodetectDataSource
    * @see TransactionAwareDataSourceProxy
-   * @see cn.taketoday.jdbc.datasource.LazyConnectionDataSourceProxy
-   * @see cn.taketoday.jdbc.core.JdbcTemplate
+   * @see infra.jdbc.datasource.LazyConnectionDataSourceProxy
+   * @see infra.jdbc.core.JdbcTemplate
    */
   public void setDataSource(@Nullable DataSource dataSource) {
     if (dataSource instanceof TransactionAwareDataSourceProxy proxy) {
@@ -783,7 +783,7 @@ public class HibernateTransactionManager extends AbstractPlatformTransactionMana
 
   /**
    * Convert the given HibernateException to an appropriate exception
-   * from the {@code cn.taketoday.dao} hierarchy.
+   * from the {@code infra.dao} hierarchy.
    * <p>Will automatically apply a specified SQLExceptionTranslator to a
    * Hibernate JDBCException, else rely on Hibernate's default translation.
    *

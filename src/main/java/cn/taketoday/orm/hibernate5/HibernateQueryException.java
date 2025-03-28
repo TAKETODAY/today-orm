@@ -19,7 +19,7 @@ package cn.taketoday.orm.hibernate5;
 
 import org.hibernate.QueryException;
 
-import cn.taketoday.dao.InvalidDataAccessResourceUsageException;
+import infra.dao.InvalidDataAccessResourceUsageException;
 
 /**
  * Hibernate-specific subclass of InvalidDataAccessResourceUsageException,

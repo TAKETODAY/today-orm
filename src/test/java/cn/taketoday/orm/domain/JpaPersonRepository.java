@@ -17,8 +17,8 @@
 
 package cn.taketoday.orm.domain;
 
-import cn.taketoday.stereotype.Repository;
-import cn.taketoday.transaction.annotation.Transactional;
+import infra.stereotype.Repository;
+import infra.transaction.annotation.Transactional;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 

@@ -1,8 +1,5 @@
 /*
- * Original Author -> Harry Yang (taketoday@foxmail.com) https://taketoday.cn
- * Copyright © TODAY & 2017 - 2022 All Rights Reserved.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.annotation.config.jpa;
@@ -34,16 +31,16 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import cn.taketoday.annotation.config.TestAutoConfigurationPackage;
-import cn.taketoday.annotation.config.jdbc.DataSourceAutoConfiguration;
 import cn.taketoday.annotation.config.jpa.test.City;
-import cn.taketoday.context.annotation.Bean;
-import cn.taketoday.context.annotation.Configuration;
-import cn.taketoday.context.annotation.config.AutoConfigurations;
-import cn.taketoday.core.annotation.Order;
-import cn.taketoday.framework.test.context.runner.ApplicationContextRunner;
 import cn.taketoday.orm.jpa.vendor.Database;
 import cn.taketoday.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import cn.taketoday.test.util.ReflectionTestUtils;
+import infra.annotation.config.jdbc.DataSourceAutoConfiguration;
+import infra.app.test.context.runner.ApplicationContextRunner;
+import infra.context.annotation.Bean;
+import infra.context.annotation.Configuration;
+import infra.context.annotation.config.AutoConfigurations;
+import infra.core.annotation.Order;
+import infra.test.util.ReflectionTestUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;

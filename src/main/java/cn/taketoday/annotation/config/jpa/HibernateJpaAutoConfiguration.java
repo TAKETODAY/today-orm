@@ -19,16 +19,16 @@ package cn.taketoday.annotation.config.jpa;
 
 import org.hibernate.engine.spi.SessionImplementor;
 
-import cn.taketoday.annotation.config.jdbc.DataSourceAutoConfiguration;
-import cn.taketoday.annotation.config.jdbc.DataSourceTransactionManagerAutoConfiguration;
-import cn.taketoday.annotation.config.transaction.TransactionAutoConfiguration;
-import cn.taketoday.annotation.config.transaction.jta.JtaAutoConfiguration;
-import cn.taketoday.context.annotation.Import;
-import cn.taketoday.context.annotation.config.DisableDIAutoConfiguration;
-import cn.taketoday.context.annotation.config.EnableAutoConfiguration;
-import cn.taketoday.context.condition.ConditionalOnClass;
-import cn.taketoday.context.properties.EnableConfigurationProperties;
 import cn.taketoday.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import infra.annotation.config.jdbc.DataSourceAutoConfiguration;
+import infra.annotation.config.jdbc.DataSourceTransactionManagerAutoConfiguration;
+import infra.annotation.config.transaction.TransactionAutoConfiguration;
+import infra.annotation.config.transaction.jta.JtaAutoConfiguration;
+import infra.context.annotation.Import;
+import infra.context.annotation.config.DisableDIAutoConfiguration;
+import infra.context.annotation.config.EnableAutoConfiguration;
+import infra.context.condition.ConditionalOnClass;
+import infra.context.properties.EnableConfigurationProperties;
 import jakarta.persistence.EntityManager;
 
 /**

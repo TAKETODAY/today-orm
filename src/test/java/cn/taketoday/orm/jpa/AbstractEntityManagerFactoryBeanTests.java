@@ -23,7 +23,7 @@ package cn.taketoday.orm.jpa;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
-import cn.taketoday.transaction.support.TransactionSynchronizationManager;
+import infra.transaction.support.TransactionSynchronizationManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.PersistenceException;
 import jakarta.persistence.spi.PersistenceUnitInfo;

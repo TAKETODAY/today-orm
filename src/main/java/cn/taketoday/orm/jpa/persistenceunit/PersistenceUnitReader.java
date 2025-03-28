@@ -1,8 +1,5 @@
 /*
- * Original Author -> Harry Yang (taketoday@foxmail.com) https://taketoday.cn
- * Copyright © TODAY & 2017 - 2023 All Rights Reserved.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.orm.jpa.persistenceunit;
@@ -35,17 +32,17 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import cn.taketoday.core.io.PatternResourceLoader;
-import cn.taketoday.core.io.Resource;
-import cn.taketoday.jdbc.datasource.lookup.DataSourceLookup;
-import cn.taketoday.lang.Assert;
-import cn.taketoday.lang.Nullable;
-import cn.taketoday.logging.Logger;
-import cn.taketoday.logging.LoggerFactory;
-import cn.taketoday.util.ResourceUtils;
-import cn.taketoday.util.StringUtils;
-import cn.taketoday.util.xml.DomUtils;
-import cn.taketoday.util.xml.SimpleSaxErrorHandler;
+import infra.core.io.PatternResourceLoader;
+import infra.core.io.Resource;
+import infra.jdbc.datasource.lookup.DataSourceLookup;
+import infra.lang.Assert;
+import infra.lang.Nullable;
+import infra.logging.Logger;
+import infra.logging.LoggerFactory;
+import infra.util.ResourceUtils;
+import infra.util.StringUtils;
+import infra.util.xml.DomUtils;
+import infra.util.xml.SimpleSaxErrorHandler;
 import jakarta.persistence.SharedCacheMode;
 import jakarta.persistence.ValidationMode;
 import jakarta.persistence.spi.PersistenceUnitTransactionType;

@@ -45,24 +45,24 @@ import java.util.concurrent.Future;
 
 import javax.sql.DataSource;
 
-import cn.taketoday.beans.factory.config.ConfigurableBeanFactory;
-import cn.taketoday.core.InfraProxy;
-import cn.taketoday.core.io.PathMatchingPatternResourceLoader;
-import cn.taketoday.core.io.PatternResourceLoader;
-import cn.taketoday.core.io.Resource;
-import cn.taketoday.core.io.ResourceLoader;
-import cn.taketoday.core.task.AsyncTaskExecutor;
-import cn.taketoday.core.type.classreading.CachingMetadataReaderFactory;
-import cn.taketoday.core.type.classreading.ClassFormatException;
-import cn.taketoday.core.type.classreading.MetadataReader;
-import cn.taketoday.core.type.classreading.MetadataReaderFactory;
-import cn.taketoday.core.type.filter.AnnotationTypeFilter;
-import cn.taketoday.core.type.filter.TypeFilter;
-import cn.taketoday.lang.Assert;
-import cn.taketoday.lang.Nullable;
-import cn.taketoday.lang.TodayStrategies;
-import cn.taketoday.transaction.jta.JtaTransactionManager;
-import cn.taketoday.util.ClassUtils;
+import infra.beans.factory.config.ConfigurableBeanFactory;
+import infra.core.InfraProxy;
+import infra.core.io.PathMatchingPatternResourceLoader;
+import infra.core.io.PatternResourceLoader;
+import infra.core.io.Resource;
+import infra.core.io.ResourceLoader;
+import infra.core.task.AsyncTaskExecutor;
+import infra.core.type.classreading.CachingMetadataReaderFactory;
+import infra.core.type.classreading.ClassFormatException;
+import infra.core.type.classreading.MetadataReader;
+import infra.core.type.classreading.MetadataReaderFactory;
+import infra.core.type.filter.AnnotationTypeFilter;
+import infra.core.type.filter.TypeFilter;
+import infra.lang.Assert;
+import infra.lang.Nullable;
+import infra.lang.TodayStrategies;
+import infra.transaction.jta.JtaTransactionManager;
+import infra.util.ClassUtils;
 import jakarta.persistence.Converter;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
@@ -397,7 +397,7 @@ public class LocalSessionFactoryBuilder extends Configuration {
   /**
    * Build the Hibernate {@code SessionFactory} through background bootstrapping,
    * using the given executor for a parallel initialization phase
-   * (e.g. a {@link cn.taketoday.core.task.SimpleAsyncTaskExecutor}).
+   * (e.g. a {@link infra.core.task.SimpleAsyncTaskExecutor}).
    * <p>{@code SessionFactory} initialization will then switch into background
    * bootstrap mode, with a {@code SessionFactory} proxy immediately returned for
    * injection purposes instead of waiting for Hibernate's bootstrapping to complete.

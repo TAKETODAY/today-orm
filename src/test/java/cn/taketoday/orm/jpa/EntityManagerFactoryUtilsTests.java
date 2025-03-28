@@ -22,12 +22,12 @@ package cn.taketoday.orm.jpa;
 
 import org.junit.jupiter.api.Test;
 
-import cn.taketoday.dao.DataAccessException;
-import cn.taketoday.dao.DataIntegrityViolationException;
-import cn.taketoday.dao.EmptyResultDataAccessException;
-import cn.taketoday.dao.IncorrectResultSizeDataAccessException;
-import cn.taketoday.dao.InvalidDataAccessApiUsageException;
-import cn.taketoday.transaction.support.TransactionSynchronizationManager;
+import infra.dao.DataAccessException;
+import infra.dao.DataIntegrityViolationException;
+import infra.dao.EmptyResultDataAccessException;
+import infra.dao.IncorrectResultSizeDataAccessException;
+import infra.dao.InvalidDataAccessApiUsageException;
+import infra.transaction.support.TransactionSynchronizationManager;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;

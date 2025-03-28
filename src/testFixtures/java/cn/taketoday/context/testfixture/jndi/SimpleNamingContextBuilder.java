@@ -1,8 +1,5 @@
 /*
- * Original Author -> Harry Yang (taketoday@foxmail.com) https://taketoday.cn
- * Copyright © Harry Yang & 2017 - 2023 All Rights Reserved.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.context.testfixture.jndi;
@@ -28,12 +25,12 @@ import javax.naming.spi.InitialContextFactory;
 import javax.naming.spi.InitialContextFactoryBuilder;
 import javax.naming.spi.NamingManager;
 
-import cn.taketoday.lang.Assert;
-import cn.taketoday.lang.Nullable;
-import cn.taketoday.logging.Logger;
-import cn.taketoday.logging.LoggerFactory;
-import cn.taketoday.util.ClassUtils;
-import cn.taketoday.util.ReflectionUtils;
+import infra.lang.Assert;
+import infra.lang.Nullable;
+import infra.logging.Logger;
+import infra.logging.LoggerFactory;
+import infra.util.ClassUtils;
+import infra.util.ReflectionUtils;
 
 /**
  * Copy of the standard {@link cn.taketoday.mock.jndi.SimpleNamingContextBuilder}
@@ -85,8 +82,8 @@ import cn.taketoday.util.ReflectionUtils;
  * @see #bind(String, Object)
  * @see #activate()
  * @see SimpleNamingContext
- * @see cn.taketoday.jdbc.datasource.SingleConnectionDataSource
- * @see cn.taketoday.jdbc.datasource.DriverManagerDataSource
+ * @see infra.jdbc.datasource.SingleConnectionDataSource
+ * @see infra.jdbc.datasource.DriverManagerDataSource
  */
 public class SimpleNamingContextBuilder implements InitialContextFactoryBuilder {
 

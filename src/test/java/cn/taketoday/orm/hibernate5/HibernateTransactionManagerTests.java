@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 - 2023 the original author or authors.
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -12,7 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.orm.hibernate5;
@@ -47,19 +47,19 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
-import cn.taketoday.beans.factory.BeanFactory;
-import cn.taketoday.dao.DataIntegrityViolationException;
-import cn.taketoday.jdbc.datasource.ConnectionHolder;
-import cn.taketoday.jdbc.datasource.DriverManagerDataSource;
-import cn.taketoday.jdbc.datasource.LazyConnectionDataSourceProxy;
-import cn.taketoday.lang.Nullable;
-import cn.taketoday.transaction.CannotCreateTransactionException;
-import cn.taketoday.transaction.PlatformTransactionManager;
-import cn.taketoday.transaction.TransactionDefinition;
-import cn.taketoday.transaction.UnexpectedRollbackException;
-import cn.taketoday.transaction.jta.JtaTransactionManager;
-import cn.taketoday.transaction.support.TransactionSynchronizationManager;
-import cn.taketoday.transaction.support.TransactionTemplate;
+import infra.beans.factory.BeanFactory;
+import infra.dao.DataIntegrityViolationException;
+import infra.jdbc.datasource.ConnectionHolder;
+import infra.jdbc.datasource.DriverManagerDataSource;
+import infra.jdbc.datasource.LazyConnectionDataSourceProxy;
+import infra.lang.Nullable;
+import infra.transaction.CannotCreateTransactionException;
+import infra.transaction.PlatformTransactionManager;
+import infra.transaction.TransactionDefinition;
+import infra.transaction.UnexpectedRollbackException;
+import infra.transaction.jta.JtaTransactionManager;
+import infra.transaction.support.TransactionSynchronizationManager;
+import infra.transaction.support.TransactionTemplate;
 import jakarta.transaction.TransactionManager;
 import jakarta.transaction.TransactionSynchronizationRegistry;
 import jakarta.transaction.UserTransaction;

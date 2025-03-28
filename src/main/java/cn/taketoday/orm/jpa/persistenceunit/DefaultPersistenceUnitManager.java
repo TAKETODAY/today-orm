@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 - 2023 the original author or authors.
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,25 +27,25 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
-import cn.taketoday.beans.factory.InitializingBean;
-import cn.taketoday.context.ResourceLoaderAware;
-import cn.taketoday.context.annotation.ClassPathBeanDefinitionScanner;
-import cn.taketoday.context.weaving.LoadTimeWeaverAware;
-import cn.taketoday.core.io.PathMatchingPatternResourceLoader;
-import cn.taketoday.core.io.PatternResourceLoader;
-import cn.taketoday.core.io.Resource;
-import cn.taketoday.core.io.ResourceLoader;
-import cn.taketoday.instrument.classloading.InstrumentationLoadTimeWeaver;
-import cn.taketoday.instrument.classloading.LoadTimeWeaver;
-import cn.taketoday.instrument.classloading.ReflectiveLoadTimeWeaver;
-import cn.taketoday.jdbc.datasource.lookup.DataSourceLookup;
-import cn.taketoday.jdbc.datasource.lookup.JndiDataSourceLookup;
-import cn.taketoday.jdbc.datasource.lookup.MapDataSourceLookup;
-import cn.taketoday.lang.Nullable;
-import cn.taketoday.logging.Logger;
-import cn.taketoday.logging.LoggerFactory;
-import cn.taketoday.util.ObjectUtils;
-import cn.taketoday.util.ResourceUtils;
+import infra.beans.factory.InitializingBean;
+import infra.context.ResourceLoaderAware;
+import infra.context.annotation.ClassPathBeanDefinitionScanner;
+import infra.context.weaving.LoadTimeWeaverAware;
+import infra.core.io.PathMatchingPatternResourceLoader;
+import infra.core.io.PatternResourceLoader;
+import infra.core.io.Resource;
+import infra.core.io.ResourceLoader;
+import infra.instrument.classloading.InstrumentationLoadTimeWeaver;
+import infra.instrument.classloading.LoadTimeWeaver;
+import infra.instrument.classloading.ReflectiveLoadTimeWeaver;
+import infra.jdbc.datasource.lookup.DataSourceLookup;
+import infra.jdbc.datasource.lookup.JndiDataSourceLookup;
+import infra.jdbc.datasource.lookup.MapDataSourceLookup;
+import infra.lang.Nullable;
+import infra.logging.Logger;
+import infra.logging.LoggerFactory;
+import infra.util.ObjectUtils;
+import infra.util.ResourceUtils;
 import jakarta.persistence.PersistenceException;
 import jakarta.persistence.SharedCacheMode;
 import jakarta.persistence.ValidationMode;
@@ -289,7 +289,7 @@ public class DefaultPersistenceUnitManager implements PersistenceUnitManager, Re
    * If not specified, data source names will be resolved as JNDI names instead
    * (as defined by standard JPA).
    *
-   * @see cn.taketoday.jdbc.datasource.lookup.MapDataSourceLookup
+   * @see infra.jdbc.datasource.lookup.MapDataSourceLookup
    */
   public void setDataSources(Map<String, DataSource> dataSources) {
     this.dataSourceLookup = new MapDataSourceLookup(dataSources);
@@ -307,8 +307,8 @@ public class DefaultPersistenceUnitManager implements PersistenceUnitManager, Re
    * does not define DataSource names at all, specify a default DataSource
    * via the "defaultDataSource" property.
    *
-   * @see cn.taketoday.jdbc.datasource.lookup.JndiDataSourceLookup
-   * @see cn.taketoday.jdbc.datasource.lookup.BeanFactoryDataSourceLookup
+   * @see infra.jdbc.datasource.lookup.JndiDataSourceLookup
+   * @see infra.jdbc.datasource.lookup.BeanFactoryDataSourceLookup
    * @see #setDataSources
    * @see #setDefaultDataSource
    */

@@ -21,9 +21,9 @@ import org.hibernate.HibernateException;
 import org.hibernate.UnresolvableObjectException;
 import org.hibernate.WrongClassException;
 
-import cn.taketoday.lang.Nullable;
 import cn.taketoday.orm.ObjectRetrievalFailureException;
-import cn.taketoday.util.ReflectionUtils;
+import infra.lang.Nullable;
+import infra.util.ReflectionUtils;
 
 /**
  * Hibernate-specific subclass of ObjectRetrievalFailureException.

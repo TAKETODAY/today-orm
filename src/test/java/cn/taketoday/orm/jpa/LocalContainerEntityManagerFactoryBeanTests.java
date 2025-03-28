@@ -1,8 +1,5 @@
 /*
- * Original Author -> Harry Yang (taketoday@foxmail.com) https://taketoday.cn
- * Copyright © Harry Yang & 2017 - 2023 All Rights Reserved.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.orm.jpa;
@@ -25,14 +22,14 @@ import org.junit.jupiter.api.Test;
 import java.util.Map;
 import java.util.Properties;
 
-import cn.taketoday.beans.factory.support.StandardBeanFactory;
-import cn.taketoday.core.testfixture.io.SerializationTestUtils;
-import cn.taketoday.dao.DataAccessException;
-import cn.taketoday.dao.OptimisticLockingFailureException;
-import cn.taketoday.instrument.classloading.InstrumentationLoadTimeWeaver;
+import infra.beans.factory.support.StandardBeanFactory;
+import infra.core.testfixture.io.SerializationTestUtils;
+import infra.dao.DataAccessException;
+import infra.dao.OptimisticLockingFailureException;
+import infra.instrument.classloading.InstrumentationLoadTimeWeaver;
 import cn.taketoday.orm.jpa.persistenceunit.MutablePersistenceUnitInfo;
-import cn.taketoday.transaction.TransactionStatus;
-import cn.taketoday.transaction.interceptor.DefaultTransactionAttribute;
+import infra.transaction.TransactionStatus;
+import infra.transaction.interceptor.DefaultTransactionAttribute;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;

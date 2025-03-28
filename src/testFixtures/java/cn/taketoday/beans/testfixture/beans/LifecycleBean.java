@@ -1,8 +1,5 @@
 /*
- * Original Author -> Harry Yang (taketoday@foxmail.com) https://taketoday.cn
- * Copyright © Harry Yang & 2017 - 2023 All Rights Reserved.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,18 +12,18 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
-package cn.taketoday.beans.testfixture.beans;
+package infra.beans.testfixture.beans;
 
-import cn.taketoday.beans.BeansException;
-import cn.taketoday.beans.factory.BeanFactory;
-import cn.taketoday.beans.factory.BeanFactoryAware;
-import cn.taketoday.beans.factory.BeanNameAware;
-import cn.taketoday.beans.factory.DisposableBean;
-import cn.taketoday.beans.factory.InitializationBeanPostProcessor;
-import cn.taketoday.beans.factory.InitializingBean;
+import infra.beans.BeansException;
+import infra.beans.factory.BeanFactory;
+import infra.beans.factory.BeanFactoryAware;
+import infra.beans.factory.BeanNameAware;
+import infra.beans.factory.DisposableBean;
+import infra.beans.factory.InitializationBeanPostProcessor;
+import infra.beans.factory.InitializingBean;
 
 /**
  * Simple test of BeanFactory initialization and lifecycle callbacks.

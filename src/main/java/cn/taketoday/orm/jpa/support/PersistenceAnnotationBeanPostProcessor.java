@@ -31,50 +31,50 @@ import java.util.Properties;
 import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
 
-import cn.taketoday.aot.generate.GeneratedClass;
-import cn.taketoday.aot.generate.GeneratedMethod;
-import cn.taketoday.aot.generate.GeneratedMethods;
-import cn.taketoday.aot.generate.GenerationContext;
-import cn.taketoday.aot.generate.MethodReference.ArgumentCodeGenerator;
-import cn.taketoday.aot.hint.RuntimeHints;
-import cn.taketoday.beans.BeanUtils;
-import cn.taketoday.beans.PropertyValues;
-import cn.taketoday.beans.factory.BeanCreationException;
-import cn.taketoday.beans.factory.BeanFactory;
-import cn.taketoday.beans.factory.BeanFactoryAware;
-import cn.taketoday.beans.factory.DependenciesBeanPostProcessor;
-import cn.taketoday.beans.factory.NoSuchBeanDefinitionException;
-import cn.taketoday.beans.factory.annotation.InjectionMetadata;
-import cn.taketoday.beans.factory.annotation.InjectionMetadata.InjectedElement;
-import cn.taketoday.beans.factory.aot.BeanRegistrationAotContribution;
-import cn.taketoday.beans.factory.aot.BeanRegistrationAotProcessor;
-import cn.taketoday.beans.factory.aot.BeanRegistrationCode;
-import cn.taketoday.beans.factory.config.ConfigurableBeanFactory;
-import cn.taketoday.beans.factory.config.DestructionAwareBeanPostProcessor;
-import cn.taketoday.beans.factory.config.InstantiationAwareBeanPostProcessor;
-import cn.taketoday.beans.factory.config.NamedBeanHolder;
-import cn.taketoday.beans.factory.support.MergedBeanDefinitionPostProcessor;
-import cn.taketoday.beans.factory.support.RegisteredBean;
-import cn.taketoday.beans.factory.support.RootBeanDefinition;
-import cn.taketoday.core.BridgeMethodResolver;
-import cn.taketoday.core.Ordered;
-import cn.taketoday.core.PriorityOrdered;
-import cn.taketoday.core.annotation.AnnotationUtils;
-import cn.taketoday.javapoet.CodeBlock;
-import cn.taketoday.javapoet.MethodSpec;
-import cn.taketoday.jndi.JndiLocatorDelegate;
-import cn.taketoday.jndi.JndiTemplate;
-import cn.taketoday.lang.Assert;
-import cn.taketoday.lang.Nullable;
 import cn.taketoday.orm.jpa.EntityManagerFactoryInfo;
 import cn.taketoday.orm.jpa.EntityManagerFactoryUtils;
 import cn.taketoday.orm.jpa.EntityManagerProxy;
 import cn.taketoday.orm.jpa.ExtendedEntityManagerCreator;
 import cn.taketoday.orm.jpa.SharedEntityManagerCreator;
-import cn.taketoday.util.CollectionUtils;
-import cn.taketoday.util.ObjectUtils;
-import cn.taketoday.util.ReflectionUtils;
-import cn.taketoday.util.StringUtils;
+import infra.aot.generate.GeneratedClass;
+import infra.aot.generate.GeneratedMethod;
+import infra.aot.generate.GeneratedMethods;
+import infra.aot.generate.GenerationContext;
+import infra.aot.generate.MethodReference.ArgumentCodeGenerator;
+import infra.aot.hint.RuntimeHints;
+import infra.beans.BeanUtils;
+import infra.beans.PropertyValues;
+import infra.beans.factory.BeanCreationException;
+import infra.beans.factory.BeanFactory;
+import infra.beans.factory.BeanFactoryAware;
+import infra.beans.factory.DependenciesBeanPostProcessor;
+import infra.beans.factory.NoSuchBeanDefinitionException;
+import infra.beans.factory.annotation.InjectionMetadata;
+import infra.beans.factory.annotation.InjectionMetadata.InjectedElement;
+import infra.beans.factory.aot.BeanRegistrationAotContribution;
+import infra.beans.factory.aot.BeanRegistrationAotProcessor;
+import infra.beans.factory.aot.BeanRegistrationCode;
+import infra.beans.factory.config.ConfigurableBeanFactory;
+import infra.beans.factory.config.DestructionAwareBeanPostProcessor;
+import infra.beans.factory.config.InstantiationAwareBeanPostProcessor;
+import infra.beans.factory.config.NamedBeanHolder;
+import infra.beans.factory.support.MergedBeanDefinitionPostProcessor;
+import infra.beans.factory.support.RegisteredBean;
+import infra.beans.factory.support.RootBeanDefinition;
+import infra.core.BridgeMethodResolver;
+import infra.core.Ordered;
+import infra.core.PriorityOrdered;
+import infra.core.annotation.AnnotationUtils;
+import infra.javapoet.CodeBlock;
+import infra.javapoet.MethodSpec;
+import infra.jndi.JndiLocatorDelegate;
+import infra.jndi.JndiTemplate;
+import infra.lang.Assert;
+import infra.lang.Nullable;
+import infra.util.CollectionUtils;
+import infra.util.ObjectUtils;
+import infra.util.ReflectionUtils;
+import infra.util.StringUtils;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.PersistenceContext;
@@ -141,7 +141,7 @@ import jakarta.persistence.SynchronizationType;
  * those server-provided EntityManagerFactory references, using Framework's own
  * transaction synchronization facilities for transactional EntityManager handling
  * (typically with Framework's {@code @Transactional} annotation for demarcation
- * and {@link cn.taketoday.transaction.jta.JtaTransactionManager} as backend).
+ * and {@link infra.transaction.jta.JtaTransactionManager} as backend).
  *
  * <p>If you prefer the Jakarta EE server's own EntityManager handling, specify entries
  * in this post-processor's {@link #setPersistenceContexts "persistenceContexts" map}
@@ -215,7 +215,7 @@ public class PersistenceAnnotationBeanPostProcessor implements InstantiationAwar
   /**
    * Set the JNDI template to use for JNDI lookups.
    *
-   * @see cn.taketoday.jndi.JndiAccessor#setJndiTemplate
+   * @see infra.jndi.JndiAccessor#setJndiTemplate
    */
   public void setJndiTemplate(Object jndiTemplate) {
     this.jndiEnvironment = jndiTemplate;
@@ -224,7 +224,7 @@ public class PersistenceAnnotationBeanPostProcessor implements InstantiationAwar
   /**
    * Set the JNDI environment to use for JNDI lookups.
    *
-   * @see cn.taketoday.jndi.JndiAccessor#setJndiEnvironment
+   * @see infra.jndi.JndiAccessor#setJndiEnvironment
    */
   public void setJndiEnvironment(Properties jndiEnvironment) {
     this.jndiEnvironment = jndiEnvironment;
@@ -235,7 +235,7 @@ public class PersistenceAnnotationBeanPostProcessor implements InstantiationAwar
    * "java:comp/env/" needs to be added if the JNDI name doesn't already
    * contain it. PersistenceAnnotationBeanPostProcessor's default is "true".
    *
-   * @see cn.taketoday.jndi.JndiLocatorSupport#setResourceRef
+   * @see infra.jndi.JndiLocatorSupport#setResourceRef
    */
   public void setResourceRef(boolean resourceRef) {
     this.resourceRef = resourceRef;

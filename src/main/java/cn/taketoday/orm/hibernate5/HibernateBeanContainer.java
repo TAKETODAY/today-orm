@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 - 2023 the original author or authors.
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -12,7 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.orm.hibernate5;
@@ -25,15 +25,15 @@ import org.hibernate.type.spi.TypeBootstrapContext;
 import java.util.Map;
 import java.util.function.Consumer;
 
-import cn.taketoday.beans.BeansException;
-import cn.taketoday.beans.factory.BeanCreationException;
-import cn.taketoday.beans.factory.config.AutowireCapableBeanFactory;
-import cn.taketoday.beans.factory.config.ConfigurableBeanFactory;
-import cn.taketoday.lang.Assert;
-import cn.taketoday.lang.Nullable;
-import cn.taketoday.logging.Logger;
-import cn.taketoday.logging.LoggerFactory;
-import cn.taketoday.util.ConcurrentReferenceHashMap;
+import infra.beans.BeansException;
+import infra.beans.factory.BeanCreationException;
+import infra.beans.factory.config.AutowireCapableBeanFactory;
+import infra.beans.factory.config.ConfigurableBeanFactory;
+import infra.lang.Assert;
+import infra.lang.Nullable;
+import infra.logging.Logger;
+import infra.logging.LoggerFactory;
+import infra.util.ConcurrentReferenceHashMap;
 
 /**
  * Framework's implementation of Hibernate's {@link BeanContainer} SPI,

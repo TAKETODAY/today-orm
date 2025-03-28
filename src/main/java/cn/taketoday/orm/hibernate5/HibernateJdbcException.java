@@ -21,7 +21,7 @@ import org.hibernate.JDBCException;
 
 import java.sql.SQLException;
 
-import cn.taketoday.dao.UncategorizedDataAccessException;
+import infra.dao.UncategorizedDataAccessException;
 
 /**
  * Hibernate-specific subclass of UncategorizedDataAccessException,

@@ -25,18 +25,6 @@ import java.util.function.Consumer;
 
 import javax.sql.DataSource;
 
-import cn.taketoday.aot.hint.MemberCategory;
-import cn.taketoday.aot.hint.RuntimeHints;
-import cn.taketoday.aot.hint.predicate.RuntimeHintsPredicates;
-import cn.taketoday.aot.test.generate.TestGenerationContext;
-import cn.taketoday.context.ApplicationContextInitializer;
-import cn.taketoday.context.annotation.AnnotationConfigApplicationContext;
-import cn.taketoday.context.annotation.Bean;
-import cn.taketoday.context.aot.ApplicationContextAotGenerator;
-import cn.taketoday.context.support.GenericApplicationContext;
-import cn.taketoday.core.io.ResourceLoader;
-import cn.taketoday.core.test.tools.Compiled;
-import cn.taketoday.core.test.tools.TestCompiler;
 import cn.taketoday.orm.jpa.JpaVendorAdapter;
 import cn.taketoday.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import cn.taketoday.orm.jpa.domain.DriversLicense;
@@ -50,6 +38,18 @@ import cn.taketoday.orm.jpa.domain.Person;
 import cn.taketoday.orm.jpa.domain.PersonListener;
 import cn.taketoday.orm.jpa.vendor.Database;
 import cn.taketoday.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import infra.aot.hint.MemberCategory;
+import infra.aot.hint.RuntimeHints;
+import infra.aot.hint.predicate.RuntimeHintsPredicates;
+import infra.aot.test.generate.TestGenerationContext;
+import infra.context.ApplicationContextInitializer;
+import infra.context.annotation.AnnotationConfigApplicationContext;
+import infra.context.annotation.Bean;
+import infra.context.aot.ApplicationContextAotGenerator;
+import infra.context.support.GenericApplicationContext;
+import infra.core.io.ResourceLoader;
+import infra.core.test.tools.Compiled;
+import infra.core.test.tools.TestCompiler;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;

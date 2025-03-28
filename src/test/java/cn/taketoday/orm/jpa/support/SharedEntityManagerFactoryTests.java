@@ -24,7 +24,7 @@ import org.junit.jupiter.api.Test;
 
 import cn.taketoday.orm.jpa.EntityManagerHolder;
 import cn.taketoday.orm.jpa.EntityManagerProxy;
-import cn.taketoday.transaction.support.TransactionSynchronizationManager;
+import infra.transaction.support.TransactionSynchronizationManager;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 

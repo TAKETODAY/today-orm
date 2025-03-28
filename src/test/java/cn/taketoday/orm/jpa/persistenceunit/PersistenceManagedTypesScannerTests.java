@@ -1,8 +1,5 @@
 /*
- * Original Author -> Harry Yang (taketoday@foxmail.com) https://taketoday.cn
- * Copyright © Harry Yang & 2017 - 2023 All Rights Reserved.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,21 +12,20 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.orm.jpa.persistenceunit;
 
 import org.junit.jupiter.api.Test;
 
-import cn.taketoday.context.testfixture.index.CandidateComponentsTestClassLoader;
-import cn.taketoday.core.io.ClassPathResource;
-import cn.taketoday.core.io.DefaultResourceLoader;
 import cn.taketoday.orm.jpa.domain.DriversLicense;
 import cn.taketoday.orm.jpa.domain.Employee;
 import cn.taketoday.orm.jpa.domain.EmployeeLocationConverter;
 import cn.taketoday.orm.jpa.domain.Person;
 import cn.taketoday.orm.jpa.domain2.entity.User;
+import infra.core.io.ClassPathResource;
+import infra.core.io.DefaultResourceLoader;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -60,7 +56,7 @@ class PersistenceManagedTypesScannerTests {
   @Test
   void scanPackageUsesIndexIfPresent() {
     DefaultResourceLoader resourceLoader = new DefaultResourceLoader(
-            CandidateComponentsTestClassLoader.index(getClass().getClassLoader(),
+            infra.context.testfixture.index.CandidateComponentsTestClassLoader.index(getClass().getClassLoader(),
                     new ClassPathResource("test-today.components", getClass())));
     PersistenceManagedTypes managedTypes = new PersistenceManagedTypesScanner(resourceLoader).scan("com.example");
     assertThat(managedTypes.getManagedClassNames()).containsExactlyInAnyOrder(

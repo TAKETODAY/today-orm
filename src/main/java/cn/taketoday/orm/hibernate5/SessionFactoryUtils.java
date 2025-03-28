@@ -1,8 +1,5 @@
 /*
- * Original Author -> Harry Yang (taketoday@foxmail.com) https://taketoday.cn
- * Copyright © TODAY & 2017 - 2022 All Rights Reserved.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.orm.hibernate5;
@@ -54,20 +51,20 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
-import cn.taketoday.dao.CannotAcquireLockException;
-import cn.taketoday.dao.DataAccessException;
-import cn.taketoday.dao.DataAccessResourceFailureException;
-import cn.taketoday.dao.DataIntegrityViolationException;
-import cn.taketoday.dao.DuplicateKeyException;
-import cn.taketoday.dao.IncorrectResultSizeDataAccessException;
-import cn.taketoday.dao.InvalidDataAccessApiUsageException;
-import cn.taketoday.dao.InvalidDataAccessResourceUsageException;
-import cn.taketoday.dao.PessimisticLockingFailureException;
-import cn.taketoday.jdbc.datasource.DataSourceUtils;
-import cn.taketoday.lang.Nullable;
-import cn.taketoday.logging.Logger;
-import cn.taketoday.logging.LoggerFactory;
-import cn.taketoday.util.ReflectionUtils;
+import infra.jdbc.datasource.DataSourceUtils;
+import infra.dao.CannotAcquireLockException;
+import infra.dao.DataAccessException;
+import infra.dao.DataAccessResourceFailureException;
+import infra.dao.DataIntegrityViolationException;
+import infra.dao.DuplicateKeyException;
+import infra.dao.IncorrectResultSizeDataAccessException;
+import infra.dao.InvalidDataAccessApiUsageException;
+import infra.dao.InvalidDataAccessResourceUsageException;
+import infra.dao.PessimisticLockingFailureException;
+import infra.lang.Nullable;
+import infra.logging.Logger;
+import infra.logging.LoggerFactory;
+import infra.util.ReflectionUtils;
 import jakarta.persistence.PersistenceException;
 
 /**
@@ -182,7 +179,7 @@ public abstract class SessionFactoryUtils {
 
   /**
    * Convert the given HibernateException to an appropriate exception
-   * from the {@code cn.taketoday.dao} hierarchy.
+   * from the {@code infra.dao} hierarchy.
    *
    * @param ex the HibernateException that occurred
    * @return the corresponding DataAccessException instance
@@ -197,7 +194,7 @@ public abstract class SessionFactoryUtils {
       return new InvalidDataAccessResourceUsageException(ex.getMessage() + "; SQL [" + jdbcEx.getSQL() + "]", ex);
     }
     if (ex instanceof QueryTimeoutException jdbcEx) {
-      return new cn.taketoday.dao.QueryTimeoutException(ex.getMessage() + "; SQL [" + jdbcEx.getSQL() + "]", ex);
+      return new infra.dao.QueryTimeoutException(ex.getMessage() + "; SQL [" + jdbcEx.getSQL() + "]", ex);
     }
     if (ex instanceof LockAcquisitionException jdbcEx) {
       return new CannotAcquireLockException(ex.getMessage() + "; SQL [" + jdbcEx.getSQL() + "]", ex);

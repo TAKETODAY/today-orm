@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import cn.taketoday.core.NativeDetector;
+import infra.core.NativeDetector;
 import cn.taketoday.orm.jpa.persistenceunit.SmartPersistenceUnitInfo;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.spi.PersistenceUnitInfo;

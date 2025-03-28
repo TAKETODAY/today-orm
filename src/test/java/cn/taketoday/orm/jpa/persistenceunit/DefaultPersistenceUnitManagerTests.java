@@ -1,8 +1,5 @@
 /*
- * Original Author -> Harry Yang (taketoday@foxmail.com) https://taketoday.cn
- * Copyright © Harry Yang & 2017 - 2023 All Rights Reserved.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,18 +12,19 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.orm.jpa.persistenceunit;
 
 import org.junit.jupiter.api.Test;
 
-import cn.taketoday.context.testfixture.index.CandidateComponentsTestClassLoader;
-import cn.taketoday.core.io.ClassPathResource;
-import cn.taketoday.core.io.DefaultResourceLoader;
 import cn.taketoday.orm.jpa.domain.Person;
+import infra.core.io.ClassPathResource;
+import infra.core.io.DefaultResourceLoader;
 
+import static infra.context.testfixture.index.CandidateComponentsTestClassLoader.disableIndex;
+import static infra.context.testfixture.index.CandidateComponentsTestClassLoader.index;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -42,7 +40,7 @@ public class DefaultPersistenceUnitManagerTests {
   public void defaultDomainWithScan() {
     this.manager.setPackagesToScan("cn.taketoday.orm.jpa.domain");
     this.manager.setResourceLoader(new DefaultResourceLoader(
-            CandidateComponentsTestClassLoader.disableIndex(getClass().getClassLoader())));
+            disableIndex(getClass().getClassLoader())));
     testDefaultDomain();
   }
 
@@ -50,7 +48,7 @@ public class DefaultPersistenceUnitManagerTests {
   public void defaultDomainWithIndex() {
     this.manager.setPackagesToScan("cn.taketoday.orm.jpa.domain");
     this.manager.setResourceLoader(new DefaultResourceLoader(
-            CandidateComponentsTestClassLoader.index(getClass().getClassLoader(),
+            index(getClass().getClassLoader(),
                     new ClassPathResource("today.components", Person.class))));
     testDefaultDomain();
   }

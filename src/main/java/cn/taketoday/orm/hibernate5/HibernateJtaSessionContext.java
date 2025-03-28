@@ -25,7 +25,7 @@ import org.hibernate.Session;
 import org.hibernate.context.internal.JTASessionContext;
 import org.hibernate.engine.spi.SessionFactoryImplementor;
 
-import cn.taketoday.transaction.support.TransactionSynchronizationManager;
+import infra.transaction.support.TransactionSynchronizationManager;
 
 /**
  * Framework-specific subclass of Hibernate's JTASessionContext,

@@ -1,8 +1,5 @@
 /*
- * Original Author -> Harry Yang (taketoday@foxmail.com) https://taketoday.cn
- * Copyright © Harry Yang & 2017 - 2023 All Rights Reserved.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.orm.jpa.support;
@@ -29,23 +26,23 @@ import java.util.function.Consumer;
 
 import javax.lang.model.element.Modifier;
 
-import cn.taketoday.aot.hint.RuntimeHints;
-import cn.taketoday.aot.hint.predicate.RuntimeHintsPredicates;
-import cn.taketoday.beans.testfixture.beans.TestBean;
-import cn.taketoday.beans.testfixture.beans.TestBeanWithPackagePrivateField;
-import cn.taketoday.beans.testfixture.beans.TestBeanWithPackagePrivateMethod;
-import cn.taketoday.beans.testfixture.beans.TestBeanWithPrivateMethod;
-import cn.taketoday.beans.testfixture.beans.TestBeanWithPublicField;
-import cn.taketoday.core.test.tools.CompileWithForkedClassLoader;
-import cn.taketoday.core.test.tools.TestCompiler;
-import cn.taketoday.core.test.tools.Compiled;
-import cn.taketoday.javapoet.ClassName;
-import cn.taketoday.javapoet.CodeBlock;
-import cn.taketoday.javapoet.JavaFile;
-import cn.taketoday.javapoet.MethodSpec;
-import cn.taketoday.javapoet.ParameterizedTypeName;
-import cn.taketoday.javapoet.TypeSpec;
-import cn.taketoday.util.ReflectionUtils;
+import infra.aot.hint.RuntimeHints;
+import infra.aot.hint.predicate.RuntimeHintsPredicates;
+import infra.beans.testfixture.beans.TestBean;
+import infra.beans.testfixture.beans.TestBeanWithPackagePrivateField;
+import infra.beans.testfixture.beans.TestBeanWithPackagePrivateMethod;
+import infra.beans.testfixture.beans.TestBeanWithPrivateMethod;
+import infra.beans.testfixture.beans.TestBeanWithPublicField;
+import infra.core.test.tools.CompileWithForkedClassLoader;
+import infra.core.test.tools.Compiled;
+import infra.core.test.tools.TestCompiler;
+import infra.javapoet.ClassName;
+import infra.javapoet.CodeBlock;
+import infra.javapoet.JavaFile;
+import infra.javapoet.MethodSpec;
+import infra.javapoet.ParameterizedTypeName;
+import infra.javapoet.TypeSpec;
+import infra.util.ReflectionUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

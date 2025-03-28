@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 - 2023 the original author or authors.
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -12,7 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.annotation.config.jpa;
@@ -29,26 +29,25 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
-import cn.taketoday.beans.factory.ObjectProvider;
-import cn.taketoday.beans.factory.annotation.DisableAllDependencyInjection;
-import cn.taketoday.beans.factory.annotation.DisableDependencyInjection;
-import cn.taketoday.beans.factory.config.ConfigurableBeanFactory;
-import cn.taketoday.context.annotation.Configuration;
-import cn.taketoday.context.condition.ConditionalOnSingleCandidate;
-import cn.taketoday.context.properties.EnableConfigurationProperties;
-import cn.taketoday.framework.jdbc.SchemaManagementProvider;
-import cn.taketoday.framework.jdbc.metadata.CompositeDataSourcePoolMetadataProvider;
-import cn.taketoday.framework.jdbc.metadata.DataSourcePoolMetadataProvider;
-import cn.taketoday.jndi.JndiLocatorDelegate;
-import cn.taketoday.lang.Nullable;
-import cn.taketoday.logging.Logger;
-import cn.taketoday.logging.LoggerFactory;
 import cn.taketoday.orm.hibernate5.HibernateBeanContainer;
 import cn.taketoday.orm.hibernate5.support.HibernateJtaPlatform;
 import cn.taketoday.orm.jpa.vendor.AbstractJpaVendorAdapter;
 import cn.taketoday.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import cn.taketoday.transaction.jta.JtaTransactionManager;
-import cn.taketoday.util.ClassUtils;
+import infra.app.jdbc.metadata.CompositeDataSourcePoolMetadataProvider;
+import infra.app.jdbc.metadata.DataSourcePoolMetadataProvider;
+import infra.beans.factory.ObjectProvider;
+import infra.beans.factory.annotation.DisableAllDependencyInjection;
+import infra.beans.factory.annotation.DisableDependencyInjection;
+import infra.beans.factory.config.ConfigurableBeanFactory;
+import infra.context.annotation.Configuration;
+import infra.context.condition.ConditionalOnSingleCandidate;
+import infra.context.properties.EnableConfigurationProperties;
+import infra.jndi.JndiLocatorDelegate;
+import infra.lang.Nullable;
+import infra.logging.Logger;
+import infra.logging.LoggerFactory;
+import infra.transaction.jta.JtaTransactionManager;
+import infra.util.ClassUtils;
 
 /**
  * {@link JpaBaseConfiguration} implementation for Hibernate.
@@ -84,7 +83,6 @@ class HibernateJpaConfiguration extends JpaBaseConfiguration {
 
   private final HibernateProperties hibernateProperties;
   private final DataSourcePoolMetadataProvider poolMetadataProvider;
-  private final HibernateDefaultDdlAutoProvider defaultDdlAutoProvider;
   private final List<HibernatePropertiesCustomizer> hibernatePropertiesCustomizers;
 
   HibernateJpaConfiguration(DataSource dataSource, JpaProperties jpaProperties,
@@ -92,12 +90,10 @@ class HibernateJpaConfiguration extends JpaBaseConfiguration {
           @Nullable JtaTransactionManager jtaTransactionManager,
           @Nullable PhysicalNamingStrategy physicalNamingStrategy,
           @Nullable ImplicitNamingStrategy implicitNamingStrategy,
-          ObjectProvider<SchemaManagementProvider> providers,
           ObjectProvider<DataSourcePoolMetadataProvider> metadataProviders,
           ObjectProvider<HibernatePropertiesCustomizer> hibernatePropertiesCustomizers) {
     super(dataSource, jpaProperties, jtaTransactionManager);
     this.hibernateProperties = hibernateProperties;
-    this.defaultDdlAutoProvider = new HibernateDefaultDdlAutoProvider(providers, dataSource);
     this.poolMetadataProvider = new CompositeDataSourcePoolMetadataProvider(metadataProviders);
     this.hibernatePropertiesCustomizers = determineHibernatePropertiesCustomizers(
             beanFactory, physicalNamingStrategy, implicitNamingStrategy, hibernatePropertiesCustomizers);
@@ -133,7 +129,6 @@ class HibernateJpaConfiguration extends JpaBaseConfiguration {
     return new LinkedHashMap<>(hibernateProperties
             .determineHibernateProperties(properties.getProperties(),
                     new HibernateSettings()
-                            .ddlAuto(defaultDdlAutoProvider)
                             .hibernatePropertiesCustomizers(hibernatePropertiesCustomizers)));
   }
 

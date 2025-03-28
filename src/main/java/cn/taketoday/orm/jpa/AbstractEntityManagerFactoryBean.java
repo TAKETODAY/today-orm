@@ -1,8 +1,5 @@
 /*
- * Original Author -> Harry Yang (taketoday@foxmail.com) https://taketoday.cn
- * Copyright © TODAY & 2017 - 2022 All Rights Reserved.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.orm.jpa;
@@ -41,23 +38,23 @@ import java.util.function.Consumer;
 
 import javax.sql.DataSource;
 
-import cn.taketoday.beans.BeanUtils;
-import cn.taketoday.beans.factory.BeanClassLoaderAware;
-import cn.taketoday.beans.factory.BeanFactory;
-import cn.taketoday.beans.factory.BeanFactoryAware;
-import cn.taketoday.beans.factory.BeanNameAware;
-import cn.taketoday.beans.factory.DisposableBean;
-import cn.taketoday.beans.factory.FactoryBean;
-import cn.taketoday.beans.factory.InitializingBean;
-import cn.taketoday.core.task.AsyncTaskExecutor;
-import cn.taketoday.dao.DataAccessException;
-import cn.taketoday.dao.support.PersistenceExceptionTranslator;
-import cn.taketoday.lang.Assert;
-import cn.taketoday.lang.Nullable;
-import cn.taketoday.logging.Logger;
-import cn.taketoday.logging.LoggerFactory;
-import cn.taketoday.util.ClassUtils;
-import cn.taketoday.util.CollectionUtils;
+import infra.beans.BeanUtils;
+import infra.beans.factory.BeanClassLoaderAware;
+import infra.beans.factory.BeanFactory;
+import infra.beans.factory.BeanFactoryAware;
+import infra.beans.factory.BeanNameAware;
+import infra.beans.factory.DisposableBean;
+import infra.beans.factory.FactoryBean;
+import infra.beans.factory.InitializingBean;
+import infra.core.task.AsyncTaskExecutor;
+import infra.dao.DataAccessException;
+import infra.dao.support.PersistenceExceptionTranslator;
+import infra.lang.Assert;
+import infra.lang.Nullable;
+import infra.logging.Logger;
+import infra.logging.LoggerFactory;
+import infra.util.ClassUtils;
+import infra.util.CollectionUtils;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.PersistenceException;
@@ -67,7 +64,7 @@ import jakarta.persistence.spi.PersistenceProvider;
 import jakarta.persistence.spi.PersistenceUnitInfo;
 
 /**
- * Abstract {@link cn.taketoday.beans.factory.FactoryBean} that creates
+ * Abstract {@link infra.beans.factory.FactoryBean} that creates
  * a local JPA {@link EntityManagerFactory} instance within
  * a Framework application context.
  *
@@ -79,9 +76,9 @@ import jakarta.persistence.spi.PersistenceUnitInfo;
  * EntityManagerFactory's lifecycle.
  *
  * <p>This class also implements the
- * {@link cn.taketoday.dao.support.PersistenceExceptionTranslator}
+ * {@link infra.dao.support.PersistenceExceptionTranslator}
  * interface, as autodetected by Framework's
- * {@link cn.taketoday.dao.annotation.PersistenceExceptionTranslationPostProcessor},
+ * {@link infra.dao.annotation.PersistenceExceptionTranslationPostProcessor},
  * for AOP-based translation of native exceptions to Framework DataAccessExceptions.
  * Hence, the presence of e.g. LocalEntityManagerFactoryBean automatically enables
  * a PersistenceExceptionTranslationPostProcessor to translate JPA exceptions.
@@ -321,7 +318,7 @@ public abstract class AbstractEntityManagerFactoryBean implements FactoryBean<En
 
   /**
    * Specify an asynchronous executor for background bootstrapping,
-   * e.g. a {@link cn.taketoday.core.task.SimpleAsyncTaskExecutor}.
+   * e.g. a {@link infra.core.task.SimpleAsyncTaskExecutor}.
    * <p>{@code EntityManagerFactory} initialization will then switch into background
    * bootstrap mode, with a {@code EntityManagerFactory} proxy immediately returned for
    * injection purposes instead of waiting for the JPA provider's bootstrapping to complete.
@@ -372,8 +369,8 @@ public abstract class AbstractEntityManagerFactoryBean implements FactoryBean<En
       PersistenceUnitInfo pui = getPersistenceUnitInfo();
       Map<String, ?> vendorPropertyMap =
               pui != null
-              ? jpaVendorAdapter.getJpaPropertyMap(pui)
-              : jpaVendorAdapter.getJpaPropertyMap();
+                      ? jpaVendorAdapter.getJpaPropertyMap(pui)
+                      : jpaVendorAdapter.getJpaPropertyMap();
       if (CollectionUtils.isNotEmpty(vendorPropertyMap)) {
         for (Map.Entry<String, ?> entry : vendorPropertyMap.entrySet()) {
           if (!jpaPropertyMap.containsKey(entry.getKey())) {
@@ -500,8 +497,8 @@ public abstract class AbstractEntityManagerFactoryBean implements FactoryBean<En
       // JPA 2.1's createEntityManager(SynchronizationType, Map)
       // Redirect to plain createEntityManager and add synchronization semantics through Framework proxy
       EntityManager rawEntityManager = (args.length > 1 ?
-                                        getNativeEntityManagerFactory().createEntityManager((Map<?, ?>) args[1]) :
-                                        getNativeEntityManagerFactory().createEntityManager());
+              getNativeEntityManagerFactory().createEntityManager((Map<?, ?>) args[1]) :
+              getNativeEntityManagerFactory().createEntityManager());
       postProcessEntityManager(rawEntityManager);
       return ExtendedEntityManagerCreator.createApplicationManagedEntityManager(rawEntityManager, this, true);
     }
@@ -549,7 +546,7 @@ public abstract class AbstractEntityManagerFactoryBean implements FactoryBean<En
    * <p>Uses the dialect's conversion if possible; otherwise falls back to
    * standard JPA exception conversion.
    *
-   * @see cn.taketoday.dao.annotation.PersistenceExceptionTranslationPostProcessor
+   * @see infra.dao.annotation.PersistenceExceptionTranslationPostProcessor
    * @see JpaDialect#translateExceptionIfPossible
    * @see EntityManagerFactoryUtils#convertJpaAccessExceptionIfPossible
    */
@@ -590,8 +587,8 @@ public abstract class AbstractEntityManagerFactoryBean implements FactoryBean<En
   @Override
   public EntityManager createNativeEntityManager(@Nullable Map<?, ?> properties) {
     EntityManager rawEntityManager = (CollectionUtils.isNotEmpty(properties) ?
-                                      getNativeEntityManagerFactory().createEntityManager(properties) :
-                                      getNativeEntityManagerFactory().createEntityManager());
+            getNativeEntityManagerFactory().createEntityManager(properties) :
+            getNativeEntityManagerFactory().createEntityManager());
     postProcessEntityManager(rawEntityManager);
     return rawEntityManager;
   }

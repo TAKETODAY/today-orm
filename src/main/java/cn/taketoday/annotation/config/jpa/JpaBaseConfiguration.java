@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 - 2023 the original author or authors.
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -12,27 +12,17 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.annotation.config.jpa;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.sql.DataSource;
 
-import cn.taketoday.annotation.config.transaction.TransactionManagerCustomizers;
-import cn.taketoday.beans.factory.BeanFactory;
-import cn.taketoday.context.annotation.Configuration;
-import cn.taketoday.context.annotation.Primary;
-import cn.taketoday.context.annotation.config.AutoConfigurationPackages;
-import cn.taketoday.context.annotation.config.EnableAutoConfiguration;
-import cn.taketoday.context.condition.ConditionalOnMissingBean;
-import cn.taketoday.context.properties.EnableConfigurationProperties;
-import cn.taketoday.core.io.ResourceLoader;
-import cn.taketoday.framework.domain.EntityScanPackages;
-import cn.taketoday.lang.Nullable;
 import cn.taketoday.orm.jpa.JpaTransactionManager;
 import cn.taketoday.orm.jpa.JpaVendorAdapter;
 import cn.taketoday.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -42,12 +32,22 @@ import cn.taketoday.orm.jpa.persistenceunit.PersistenceUnitManager;
 import cn.taketoday.orm.jpa.support.EntityManagerFactoryBuilder;
 import cn.taketoday.orm.jpa.support.EntityManagerFactoryBuilderCustomizer;
 import cn.taketoday.orm.jpa.vendor.AbstractJpaVendorAdapter;
-import cn.taketoday.stereotype.Component;
-import cn.taketoday.transaction.PlatformTransactionManager;
-import cn.taketoday.transaction.TransactionManager;
-import cn.taketoday.transaction.jta.JtaTransactionManager;
-import cn.taketoday.util.ObjectUtils;
-import cn.taketoday.util.StringUtils;
+import infra.annotation.config.transaction.TransactionManagerCustomizers;
+import infra.beans.factory.BeanFactory;
+import infra.context.annotation.Configuration;
+import infra.context.annotation.Primary;
+import infra.context.annotation.config.AutoConfigurationPackages;
+import infra.context.annotation.config.EnableAutoConfiguration;
+import infra.context.condition.ConditionalOnMissingBean;
+import infra.context.properties.EnableConfigurationProperties;
+import infra.core.io.ResourceLoader;
+import infra.lang.Nullable;
+import infra.stereotype.Component;
+import infra.transaction.PlatformTransactionManager;
+import infra.transaction.TransactionManager;
+import infra.transaction.jta.JtaTransactionManager;
+import infra.util.ObjectUtils;
+import infra.util.StringUtils;
 import jakarta.persistence.EntityManagerFactory;
 
 /**
@@ -200,8 +200,8 @@ public abstract class JpaBaseConfiguration {
     }
 
     private static String[] getPackagesToScan(BeanFactory beanFactory) {
-      List<String> packages = EntityScanPackages.get(beanFactory).getPackageNames();
-      if (packages.isEmpty() && AutoConfigurationPackages.has(beanFactory)) {
+      List<String> packages = new ArrayList<>();
+      if (AutoConfigurationPackages.has(beanFactory)) {
         packages = AutoConfigurationPackages.get(beanFactory);
       }
       return StringUtils.toStringArray(packages);

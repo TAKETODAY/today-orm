@@ -1,8 +1,5 @@
 /*
- * Original Author -> Harry Yang (taketoday@foxmail.com) https://taketoday.cn
- * Copyright © Harry Yang & 2017 - 2023 All Rights Reserved.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.annotation.config.jpa;
@@ -24,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.function.Supplier;
 
-import cn.taketoday.lang.Nullable;
+import infra.lang.Nullable;
 
 /**
  * Settings to apply when configuring Hibernate.
@@ -37,15 +34,7 @@ public class HibernateSettings {
   @Nullable
   private Supplier<String> ddlAuto;
 
-  @Nullable
-  private HibernateDefaultDdlAutoProvider defaultDdlAutoProvider;
-
   private Collection<HibernatePropertiesCustomizer> hibernatePropertiesCustomizers;
-
-  public HibernateSettings ddlAuto(HibernateDefaultDdlAutoProvider defaultDdlAutoProvider) {
-    this.defaultDdlAutoProvider = defaultDdlAutoProvider;
-    return this;
-  }
 
   public HibernateSettings ddlAuto(Supplier<String> ddlAuto) {
     this.ddlAuto = ddlAuto;
@@ -56,9 +45,6 @@ public class HibernateSettings {
   public String getDdlAuto() {
     if (ddlAuto != null) {
       return ddlAuto.get();
-    }
-    if (defaultDdlAutoProvider != null) {
-      return defaultDdlAutoProvider.getDefaultDdlAuto();
     }
     return null;
   }

@@ -1,8 +1,5 @@
 /*
- * Original Author -> Harry Yang (taketoday@foxmail.com) https://taketoday.cn
- * Copyright © Harry Yang & 2017 - 2023 All Rights Reserved.
- *
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.annotation.config.jpa;
@@ -32,19 +29,8 @@ import java.util.UUID;
 import javax.sql.DataSource;
 
 import cn.taketoday.annotation.config.TestAutoConfigurationPackage;
-import cn.taketoday.annotation.config.jdbc.DataSourceAutoConfiguration;
-import cn.taketoday.annotation.config.jdbc.DataSourceTransactionManagerAutoConfiguration;
 import cn.taketoday.annotation.config.jpa.domain.country.Country;
 import cn.taketoday.annotation.config.jpa.test.City;
-import cn.taketoday.annotation.config.transaction.TransactionAutoConfiguration;
-import cn.taketoday.context.annotation.Bean;
-import cn.taketoday.context.annotation.Configuration;
-import cn.taketoday.context.annotation.Primary;
-import cn.taketoday.context.annotation.config.AutoConfigurations;
-import cn.taketoday.framework.test.context.assertj.AssertableApplicationContext;
-import cn.taketoday.framework.test.context.runner.ApplicationContextRunner;
-import cn.taketoday.framework.test.context.runner.ContextConsumer;
-import cn.taketoday.jdbc.config.DataSourceBuilder;
 import cn.taketoday.orm.jpa.JpaTransactionManager;
 import cn.taketoday.orm.jpa.JpaVendorAdapter;
 import cn.taketoday.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -52,9 +38,20 @@ import cn.taketoday.orm.jpa.persistenceunit.DefaultPersistenceUnitManager;
 import cn.taketoday.orm.jpa.persistenceunit.PersistenceManagedTypes;
 import cn.taketoday.orm.jpa.persistenceunit.PersistenceUnitManager;
 import cn.taketoday.orm.jpa.support.EntityManagerFactoryBuilderCustomizer;
-import cn.taketoday.test.BuildOutput;
-import cn.taketoday.transaction.PlatformTransactionManager;
-import cn.taketoday.transaction.TransactionManager;
+import infra.annotation.config.jdbc.DataSourceAutoConfiguration;
+import infra.annotation.config.jdbc.DataSourceTransactionManagerAutoConfiguration;
+import infra.annotation.config.transaction.TransactionAutoConfiguration;
+import infra.app.test.context.assertj.AssertableApplicationContext;
+import infra.app.test.context.runner.ApplicationContextRunner;
+import infra.app.test.context.runner.ContextConsumer;
+import infra.context.annotation.Bean;
+import infra.context.annotation.Configuration;
+import infra.context.annotation.Primary;
+import infra.context.annotation.config.AutoConfigurations;
+import infra.jdbc.config.DataSourceBuilder;
+import infra.test.BuildOutput;
+import infra.transaction.PlatformTransactionManager;
+import infra.transaction.TransactionManager;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.metamodel.ManagedType;

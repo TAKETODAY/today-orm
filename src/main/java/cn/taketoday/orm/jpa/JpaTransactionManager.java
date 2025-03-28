@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 - 2023 the original author or authors.
+ * Copyright 2017 - 2024 the original author or authors.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -12,7 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see [http://www.gnu.org/licenses/]
+ * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
 package cn.taketoday.orm.jpa;
@@ -24,33 +24,33 @@ import java.util.function.Consumer;
 
 import javax.sql.DataSource;
 
-import cn.taketoday.beans.BeansException;
-import cn.taketoday.beans.factory.BeanFactory;
-import cn.taketoday.beans.factory.BeanFactoryAware;
-import cn.taketoday.beans.factory.InitializingBean;
-import cn.taketoday.dao.DataAccessException;
-import cn.taketoday.dao.support.DataAccessUtils;
-import cn.taketoday.jdbc.datasource.ConnectionHandle;
-import cn.taketoday.jdbc.datasource.ConnectionHolder;
-import cn.taketoday.jdbc.datasource.JdbcTransactionObjectSupport;
-import cn.taketoday.jdbc.datasource.TransactionAwareDataSourceProxy;
-import cn.taketoday.lang.Assert;
-import cn.taketoday.lang.Nullable;
-import cn.taketoday.transaction.CannotCreateTransactionException;
-import cn.taketoday.transaction.IllegalTransactionStateException;
-import cn.taketoday.transaction.NestedTransactionNotSupportedException;
-import cn.taketoday.transaction.SavepointManager;
-import cn.taketoday.transaction.TransactionDefinition;
-import cn.taketoday.transaction.TransactionException;
-import cn.taketoday.transaction.TransactionSystemException;
-import cn.taketoday.transaction.support.AbstractPlatformTransactionManager;
-import cn.taketoday.transaction.support.DefaultTransactionStatus;
-import cn.taketoday.transaction.support.DelegatingTransactionDefinition;
-import cn.taketoday.transaction.support.ResourceTransactionDefinition;
-import cn.taketoday.transaction.support.ResourceTransactionManager;
-import cn.taketoday.transaction.support.SynchronizationInfo;
-import cn.taketoday.transaction.support.TransactionSynchronizationManager;
-import cn.taketoday.util.CollectionUtils;
+import infra.beans.BeansException;
+import infra.beans.factory.BeanFactory;
+import infra.beans.factory.BeanFactoryAware;
+import infra.beans.factory.InitializingBean;
+import infra.dao.DataAccessException;
+import infra.dao.support.DataAccessUtils;
+import infra.jdbc.datasource.ConnectionHandle;
+import infra.jdbc.datasource.ConnectionHolder;
+import infra.jdbc.datasource.JdbcTransactionObjectSupport;
+import infra.jdbc.datasource.TransactionAwareDataSourceProxy;
+import infra.lang.Assert;
+import infra.lang.Nullable;
+import infra.transaction.CannotCreateTransactionException;
+import infra.transaction.IllegalTransactionStateException;
+import infra.transaction.NestedTransactionNotSupportedException;
+import infra.transaction.SavepointManager;
+import infra.transaction.TransactionDefinition;
+import infra.transaction.TransactionException;
+import infra.transaction.TransactionSystemException;
+import infra.transaction.support.AbstractPlatformTransactionManager;
+import infra.transaction.support.DefaultTransactionStatus;
+import infra.transaction.support.DelegatingTransactionDefinition;
+import infra.transaction.support.ResourceTransactionDefinition;
+import infra.transaction.support.ResourceTransactionManager;
+import infra.transaction.support.SynchronizationInfo;
+import infra.transaction.support.TransactionSynchronizationManager;
+import infra.util.CollectionUtils;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
@@ -58,7 +58,7 @@ import jakarta.persistence.PersistenceException;
 import jakarta.persistence.RollbackException;
 
 /**
- * {@link cn.taketoday.transaction.PlatformTransactionManager} implementation
+ * {@link infra.transaction.PlatformTransactionManager} implementation
  * for a single JPA {@link EntityManagerFactory}. Binds a JPA
  * EntityManager from the specified factory to the thread, potentially allowing for
  * one thread-bound EntityManager per factory. {@link SharedEntityManagerCreator} and
@@ -68,7 +68,7 @@ import jakarta.persistence.RollbackException;
  *
  * <p>This transaction manager is appropriate for applications that use a single
  * JPA EntityManagerFactory for transactional data access. JTA (usually through
- * {@link cn.taketoday.transaction.jta.JtaTransactionManager}) is necessary
+ * {@link infra.transaction.jta.JtaTransactionManager}) is necessary
  * for accessing multiple transactional resources within the same transaction.
  * Note that you need to configure your JPA provider accordingly in order to make
  * it participate in JTA transactions.
@@ -78,10 +78,10 @@ import jakarta.persistence.RollbackException;
  * This allows for mixing services which access JPA and services which use plain
  * JDBC (without being aware of JPA)! Application code needs to stick to the
  * same simple Connection lookup pattern as with
- * {@link cn.taketoday.jdbc.datasource.DataSourceTransactionManager}
- * (i.e. {@link cn.taketoday.jdbc.datasource.DataSourceUtils#getConnection}
+ * {@link infra.jdbc.datasource.DataSourceTransactionManager}
+ * (i.e. {@link infra.jdbc.datasource.DataSourceUtils#getConnection}
  * or going through a
- * {@link cn.taketoday.jdbc.datasource.TransactionAwareDataSourceProxy}).
+ * {@link infra.jdbc.datasource.TransactionAwareDataSourceProxy}).
  * Note that this requires a vendor-specific {@link JpaDialect} to be configured.
  *
  * <p>Note: To be able to register a DataSource's Connection for plain JDBC code,
@@ -107,11 +107,11 @@ import jakarta.persistence.RollbackException;
  * @see #setDataSource
  * @see LocalEntityManagerFactoryBean
  * @see cn.taketoday.orm.jpa.support.SharedEntityManagerBean
- * @see cn.taketoday.jdbc.datasource.DataSourceUtils#getConnection
- * @see cn.taketoday.jdbc.datasource.DataSourceUtils#releaseConnection
- * @see cn.taketoday.jdbc.core.JdbcTemplate
- * @see cn.taketoday.jdbc.support.JdbcTransactionManager
- * @see cn.taketoday.transaction.jta.JtaTransactionManager
+ * @see infra.jdbc.datasource.DataSourceUtils#getConnection
+ * @see infra.jdbc.datasource.DataSourceUtils#releaseConnection
+ * @see infra.jdbc.core.JdbcTemplate
+ * @see infra.jdbc.support.JdbcTransactionManager
+ * @see infra.transaction.jta.JtaTransactionManager
  * @since 4.0
  */
 @SuppressWarnings("serial")
@@ -263,9 +263,9 @@ public class JpaTransactionManager extends AbstractPlatformTransactionManager
    *
    * @see EntityManagerFactoryInfo#getDataSource()
    * @see #setJpaDialect
-   * @see cn.taketoday.jdbc.datasource.TransactionAwareDataSourceProxy
-   * @see cn.taketoday.jdbc.datasource.DataSourceUtils
-   * @see cn.taketoday.jdbc.core.JdbcTemplate
+   * @see infra.jdbc.datasource.TransactionAwareDataSourceProxy
+   * @see infra.jdbc.datasource.DataSourceUtils
+   * @see infra.jdbc.core.JdbcTemplate
    */
   public void setDataSource(@Nullable DataSource dataSource) {
     if (dataSource instanceof TransactionAwareDataSourceProxy proxy) {
@@ -487,7 +487,7 @@ public class JpaTransactionManager extends AbstractPlatformTransactionManager
     }
     else {
       em = (CollectionUtils.isNotEmpty(properties) ?
-            emf.createEntityManager(properties) : emf.createEntityManager());
+              emf.createEntityManager(properties) : emf.createEntityManager());
     }
     if (this.entityManagerInitializer != null) {
       this.entityManagerInitializer.accept(em);

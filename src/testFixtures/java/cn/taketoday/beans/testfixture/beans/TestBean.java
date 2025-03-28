@@ -15,7 +15,7 @@
  * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
-package cn.taketoday.beans.testfixture.beans;
+package infra.beans.testfixture.beans;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,11 +28,11 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import cn.taketoday.beans.factory.BeanFactory;
-import cn.taketoday.beans.factory.BeanFactoryAware;
-import cn.taketoday.beans.factory.BeanNameAware;
-import cn.taketoday.lang.Nullable;
-import cn.taketoday.util.ObjectUtils;
+import infra.beans.factory.BeanFactory;
+import infra.beans.factory.BeanFactoryAware;
+import infra.beans.factory.BeanNameAware;
+import infra.lang.Nullable;
+import infra.util.ObjectUtils;
 
 /**
  * Simple test bean used for testing bean factories, the AOP framework etc.
@@ -419,7 +419,7 @@ public class TestBean implements BeanNameAware, BeanFactoryAware, ITestBean, IOt
   }
 
   /**
-   * @see cn.taketoday.beans.testfixture.beans.ITestBean#exceptional(Throwable)
+   * @see infra.beans.testfixture.beans.ITestBean#exceptional(Throwable)
    */
   @Override
   public void exceptional(Throwable t) throws Throwable {
@@ -434,7 +434,7 @@ public class TestBean implements BeanNameAware, BeanFactoryAware, ITestBean, IOt
   }
 
   /**
-   * @see cn.taketoday.beans.testfixture.beans.ITestBean#returnsThis()
+   * @see infra.beans.testfixture.beans.ITestBean#returnsThis()
    */
   @Override
   public Object returnsThis() {
@@ -442,7 +442,7 @@ public class TestBean implements BeanNameAware, BeanFactoryAware, ITestBean, IOt
   }
 
   /**
-   * @see cn.taketoday.beans.testfixture.beans.IOther#absquatulate()
+   * @see infra.beans.testfixture.beans.IOther#absquatulate()
    */
   @Override
   public void absquatulate() {

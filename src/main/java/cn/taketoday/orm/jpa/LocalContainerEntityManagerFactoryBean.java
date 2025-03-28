@@ -19,22 +19,22 @@ package cn.taketoday.orm.jpa;
 
 import javax.sql.DataSource;
 
-import cn.taketoday.beans.BeanUtils;
-import cn.taketoday.context.ResourceLoaderAware;
-import cn.taketoday.context.weaving.LoadTimeWeaverAware;
-import cn.taketoday.core.io.ResourceLoader;
-import cn.taketoday.instrument.classloading.InstrumentationLoadTimeWeaver;
-import cn.taketoday.instrument.classloading.LoadTimeWeaver;
-import cn.taketoday.instrument.classloading.ReflectiveLoadTimeWeaver;
-import cn.taketoday.jdbc.datasource.lookup.SingleDataSourceLookup;
-import cn.taketoday.lang.Assert;
-import cn.taketoday.lang.Nullable;
 import cn.taketoday.orm.jpa.persistenceunit.DefaultPersistenceUnitManager;
 import cn.taketoday.orm.jpa.persistenceunit.PersistenceManagedTypes;
 import cn.taketoday.orm.jpa.persistenceunit.PersistenceUnitManager;
 import cn.taketoday.orm.jpa.persistenceunit.PersistenceUnitPostProcessor;
 import cn.taketoday.orm.jpa.persistenceunit.SmartPersistenceUnitInfo;
-import cn.taketoday.util.ClassUtils;
+import infra.beans.BeanUtils;
+import infra.context.ResourceLoaderAware;
+import infra.context.weaving.LoadTimeWeaverAware;
+import infra.core.io.ResourceLoader;
+import infra.instrument.classloading.InstrumentationLoadTimeWeaver;
+import infra.instrument.classloading.LoadTimeWeaver;
+import infra.instrument.classloading.ReflectiveLoadTimeWeaver;
+import infra.jdbc.datasource.lookup.SingleDataSourceLookup;
+import infra.lang.Assert;
+import infra.lang.Nullable;
+import infra.util.ClassUtils;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.PersistenceException;
 import jakarta.persistence.SharedCacheMode;
@@ -43,7 +43,7 @@ import jakarta.persistence.spi.PersistenceProvider;
 import jakarta.persistence.spi.PersistenceUnitInfo;
 
 /**
- * {@link cn.taketoday.beans.factory.FactoryBean} that creates a JPA
+ * {@link infra.beans.factory.FactoryBean} that creates a JPA
  * {@link EntityManagerFactory} according to JPA's standard
  * <i>container</i> bootstrap contract. This is the most powerful way to set
  * up a shared JPA EntityManagerFactory in a Framework application context;
@@ -181,7 +181,7 @@ public class LocalContainerEntityManagerFactoryBean extends AbstractEntityManage
    * is necessary; all you need to do is to specify base packages to search here.
    * <p>Default is none. Specify packages to search for autodetection of your entity
    * classes in the classpath. This is analogous to Infra component-scan feature
-   * ({@link cn.taketoday.context.annotation.ClassPathBeanDefinitionScanner}).
+   * ({@link infra.context.annotation.ClassPathBeanDefinitionScanner}).
    * <p>Consider setting a {@link PersistenceManagedTypes} instead that allows the
    * scanning logic to be optimized by AOT processing.
    * <p><b>Note: There may be limitations in comparison to regular JPA scanning.</b>

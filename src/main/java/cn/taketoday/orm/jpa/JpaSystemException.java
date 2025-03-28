@@ -17,12 +17,12 @@
 
 package cn.taketoday.orm.jpa;
 
-import cn.taketoday.dao.UncategorizedDataAccessException;
+import infra.dao.UncategorizedDataAccessException;
 
 /**
  * JPA-specific subclass of UncategorizedDataAccessException,
  * for JPA system errors that do not match any concrete
- * {@code cn.taketoday.dao} exceptions.
+ * {@code infra.dao} exceptions.
  *
  * @author Juergen Hoeller
  * @author <a href="https://github.com/TAKETODAY">Harry Yang</a>

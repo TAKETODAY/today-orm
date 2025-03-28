@@ -18,7 +18,7 @@
  * along with this program.  If not, see [http://www.gnu.org/licenses/]
  */
 
-package cn.taketoday.core.testfixture.io;
+package infra.core.testfixture.io;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

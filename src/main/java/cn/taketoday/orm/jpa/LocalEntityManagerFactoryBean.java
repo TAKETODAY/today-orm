@@ -19,14 +19,14 @@ package cn.taketoday.orm.jpa;
 
 import javax.sql.DataSource;
 
-import cn.taketoday.lang.Nullable;
+import infra.lang.Nullable;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.PersistenceException;
 import jakarta.persistence.spi.PersistenceProvider;
 
 /**
- * {@link cn.taketoday.beans.factory.FactoryBean} that creates a JPA
+ * {@link infra.beans.factory.FactoryBean} that creates a JPA
  * {@link EntityManagerFactory} according to JPA's standard
  * <i>standalone</i> bootstrap contract. This is the simplest way to set up a
  * shared JPA EntityManagerFactory in a Framework application context; the

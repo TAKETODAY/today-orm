@@ -15,7 +15,7 @@
  * along with this program. If not, see [https://www.gnu.org/licenses/]
  */
 
-package cn.taketoday.beans.testfixture.beans;
+package infra.beans.testfixture.beans;
 
 import java.io.IOException;
 
