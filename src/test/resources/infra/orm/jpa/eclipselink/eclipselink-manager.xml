@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2017 - 2024 the original author or authors.
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program. If not, see [https://www.gnu.org/licenses/]
+  -->
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+    "https://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+
+  <bean id="entityManagerFactory" class="infra.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <property name="persistenceXmlLocation" value="cn/taketoday/orm/jpa/domain/persistence.xml" />
+    <!--
+    <property name="persistenceUnitName" value="Person"/>
+    <property name="packagesToScan" value="cn.taketoday.orm.jpa.domain"/>
+    -->
+    <property name="dataSource" ref="dataSource" />
+    <property name="jpaVendorAdapter">
+      <bean class="infra.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
+        <property name="database" value="HSQL" />
+        <property name="showSql" value="true" />
+        <property name="generateDdl" value="true" />
+      </bean>
+    </property>
+    <property name="jpaPropertyMap">
+      <props>
+        <prop key="eclipselink.weaving">false</prop>
+      </props>
+    </property>
+  </bean>
+
+  <bean id="transactionManager" class="infra.orm.jpa.JpaTransactionManager">
+    <property name="entityManagerFactory" ref="entityManagerFactory" />
+  </bean>
+
+</beans>

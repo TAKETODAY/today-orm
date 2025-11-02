@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2017 - 2024 the original author or authors.
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program. If not, see [https://www.gnu.org/licenses/]
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    https://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+  <bean id="entityManagerFactory" class="infra.orm.jpa.LocalContainerEntityManagerFactoryBean" primary="true">
+    <property name="persistenceXmlLocation" value="cn/taketoday/orm/jpa/domain/persistence-context.xml" />
+    <property name="dataSource" ref="dataSource" />
+    <property name="jpaVendorAdapter">
+      <bean class="infra.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <property name="database" value="HSQL" />
+        <property name="showSql" value="true" />
+        <property name="generateDdl" value="true" />
+      </bean>
+    </property>
+    <property name="jpaPropertyMap">
+      <props>
+        <prop key="hibernate.current_session_context_class">infra.orm.hibernate5.HibernateSessionContext</prop>
+        <prop key="hibernate.cache.provider_class">org.hibernate.cache.HashtableCacheProvider</prop>
+      </props>
+    </property>
+    <property name="bootstrapExecutor">
+      <bean class="infra.core.task.SimpleAsyncTaskExecutor" />
+    </property>
+  </bean>
+
+  <bean id="transactionManager" class="infra.orm.jpa.JpaTransactionManager">
+    <property name="entityManagerFactory" ref="entityManagerFactory" />
+  </bean>
+
+  <bean id="sessionFactory" factory-bean="entityManagerFactory" factory-method="getSessionFactory" />
+
+  <bean id="hibernateStatistics" factory-bean="sessionFactory" factory-method="getStatistics" />
+
+  <bean class="infra.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />
+
+</beans>
