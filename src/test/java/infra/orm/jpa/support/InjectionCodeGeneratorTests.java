@@ -28,11 +28,11 @@ import javax.lang.model.element.Modifier;
 
 import infra.aot.hint.RuntimeHints;
 import infra.aot.hint.predicate.RuntimeHintsPredicates;
-import infra.beans.testfixture.beans.TestBean;
-import infra.beans.testfixture.beans.TestBeanWithPackagePrivateField;
-import infra.beans.testfixture.beans.TestBeanWithPackagePrivateMethod;
-import infra.beans.testfixture.beans.TestBeanWithPrivateMethod;
-import infra.beans.testfixture.beans.TestBeanWithPublicField;
+import infra.beans.testfixture.TestBean;
+import infra.beans.testfixture.TestBeanWithPackagePrivateField;
+import infra.beans.testfixture.TestBeanWithPackagePrivateMethod;
+import infra.beans.testfixture.TestBeanWithPrivateMethod;
+import infra.beans.testfixture.TestBeanWithPublicField;
 import infra.core.test.tools.CompileWithForkedClassLoader;
 import infra.core.test.tools.Compiled;
 import infra.core.test.tools.TestCompiler;

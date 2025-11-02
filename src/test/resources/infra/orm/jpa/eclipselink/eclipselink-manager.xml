@@ -22,10 +22,10 @@
 <beans>
 
   <bean id="entityManagerFactory" class="infra.orm.jpa.LocalContainerEntityManagerFactoryBean">
-    <property name="persistenceXmlLocation" value="cn/taketoday/orm/jpa/domain/persistence.xml" />
+    <property name="persistenceXmlLocation" value="infra/orm/jpa/domain/persistence.xml" />
     <!--
     <property name="persistenceUnitName" value="Person"/>
-    <property name="packagesToScan" value="cn.taketoday.orm.jpa.domain"/>
+    <property name="packagesToScan" value="infra.orm.jpa.domain"/>
     -->
     <property name="dataSource" ref="dataSource" />
     <property name="jpaVendorAdapter">

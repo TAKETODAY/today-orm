@@ -22,7 +22,7 @@
     https://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
   <bean id="entityManagerFactory" class="infra.orm.jpa.LocalContainerEntityManagerFactoryBean" primary="true">
-    <property name="persistenceXmlLocation" value="cn/taketoday/orm/jpa/domain/persistence-context.xml" />
+    <property name="persistenceXmlLocation" value="infra/orm/jpa/domain/persistence-context.xml" />
     <property name="dataSource" ref="dataSource" />
     <property name="jpaVendorAdapter">
       <bean class="infra.orm.jpa.vendor.HibernateJpaVendorAdapter">

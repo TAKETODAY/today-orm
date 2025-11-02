@@ -26,7 +26,6 @@ description = "Infra Object/Relational Mapping"
 group = "cn.taketoday"
 
 apply plugin: 'jacoco'
-apply plugin: "java-test-fixtures"
 apply plugin: 'infra.application'
 
 ext.javadocLinks = [
@@ -109,18 +108,6 @@ dependencies {
   compileOnly("com.google.code.findbugs:jsr305")
   compileOnly("com.google.code.findbugs:findbugs")
   compileOnly('org.jboss.logging:jboss-logging:3.5.3.Final')
-
-  testFixturesImplementation("cn.taketoday:today-aop")
-  testFixturesImplementation("cn.taketoday:today-context")
-  testFixturesImplementation("cn.taketoday:today-web")
-  testFixturesImplementation("io.netty:netty-codec-http")
-  testFixturesImplementation("com.google.code.findbugs:jsr305")
-  testFixturesImplementation("org.junit.platform:junit-platform-launcher")
-  testFixturesImplementation("org.junit.jupiter:junit-jupiter-api")
-  testFixturesImplementation("org.junit.jupiter:junit-jupiter-params")
-  testFixturesImplementation("org.assertj:assertj-core")
-  testFixturesImplementation("org.xmlunit:xmlunit-assertj")
-  testFixturesImplementation("io.projectreactor:reactor-test")
 
 
 }

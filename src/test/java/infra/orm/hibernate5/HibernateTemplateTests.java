@@ -54,7 +54,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import infra.beans.testfixture.beans.TestBean;
+import infra.beans.testfixture.TestBean;
 import infra.dao.CannotAcquireLockException;
 import infra.dao.DataAccessResourceFailureException;
 import infra.dao.DataIntegrityViolationException;

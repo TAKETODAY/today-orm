@@ -46,12 +46,12 @@ import infra.util.ConcurrentReferenceHashMap;
  * in JPA properties, e.g.:
  *
  * <pre class="code">
- * &lt;bean id="entityManagerFactory" class="cn.taketoday.orm.jpa.LocalContainerEntityManagerFactoryBean"&gt;
+ * &lt;bean id="entityManagerFactory" class="infra.orm.jpa.LocalContainerEntityManagerFactoryBean"&gt;
  *   ...
  *   &lt;property name="jpaPropertyMap"&gt;
  * 	   &lt;map&gt;
  *       &lt;entry key="hibernate.resource.beans.container"&gt;
- * 	       &lt;bean class="cn.taketoday.orm.hibernate5.HibernateBeanContainer"/&gt;
+ * 	       &lt;bean class="infra.orm.hibernate5.HibernateBeanContainer"/&gt;
  * 	     &lt;/entry&gt;
  * 	   &lt;/map&gt;
  *   &lt;/property&gt;

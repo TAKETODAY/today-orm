@@ -117,7 +117,7 @@ import jakarta.persistence.SynchronizationType;
  * In both cases, the post-processor definition will look as simple as this:
  *
  * <pre class="code">
- * &lt;bean class="cn.taketoday.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/&gt;</pre>
+ * &lt;bean class="infra.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/&gt;</pre>
  *
  * In the JNDI case, specify the corresponding JNDI names in this post-processor's
  * {@link #setPersistenceUnits "persistenceUnits" map}, typically with matching
@@ -127,7 +127,7 @@ import jakarta.persistence.SynchronizationType;
  * For example:
  *
  * <pre class="code">
- * &lt;bean class="cn.taketoday.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"&gt;
+ * &lt;bean class="infra.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"&gt;
  *   &lt;property name="persistenceUnits"&gt;
  *     &lt;map/gt;
  *       &lt;entry key="unit1" value="persistence/unit1"/&gt;
@@ -152,7 +152,7 @@ import jakarta.persistence.SynchronizationType;
  * Jakarta EE deployment descriptor. For example:
  *
  * <pre class="code">
- * &lt;bean class="cn.taketoday.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"&gt;
+ * &lt;bean class="infra.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"&gt;
  *   &lt;property name="persistenceContexts"&gt;
  *     &lt;map/gt;
  *       &lt;entry key="unit1" value="persistence/context1"/&gt;

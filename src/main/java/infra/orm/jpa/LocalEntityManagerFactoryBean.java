@@ -65,7 +65,7 @@ import jakarta.persistence.spi.PersistenceProvider;
  * @see #setJpaVendorAdapter
  * @see JpaTransactionManager#setEntityManagerFactory
  * @see LocalContainerEntityManagerFactoryBean
- * @see cn.taketoday.jndi.JndiObjectFactoryBean
+ * @see infra.jndi.JndiObjectFactoryBean
  * @see SharedEntityManagerBean
  * @see Persistence#createEntityManagerFactory
  * @see PersistenceProvider#createEntityManagerFactory

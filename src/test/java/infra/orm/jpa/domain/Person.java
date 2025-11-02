@@ -17,7 +17,7 @@
 
 package infra.orm.jpa.domain;
 
-import infra.beans.testfixture.beans.TestBean;
+import infra.beans.testfixture.TestBean;
 import infra.context.ApplicationContext;
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;

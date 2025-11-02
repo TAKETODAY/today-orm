@@ -50,7 +50,7 @@ public class EntityManagerFactoryUtilsTests {
 
   /*
    * Test method for
-   * 'cn.taketoday.orm.jpa.EntityManagerFactoryUtils.doGetEntityManager(EntityManagerFactory)'
+   * 'infra.orm.jpa.EntityManagerFactoryUtils.doGetEntityManager(EntityManagerFactory)'
    */
   @Test
   public void testDoGetEntityManager() {
@@ -113,7 +113,7 @@ public class EntityManagerFactoryUtilsTests {
 
   /*
    * Test method for
-   * 'cn.taketoday.orm.jpa.EntityManagerFactoryUtils.convertJpaAccessException(PersistenceException)'
+   * 'infra.orm.jpa.EntityManagerFactoryUtils.convertJpaAccessException(PersistenceException)'
    */
   @Test
   @SuppressWarnings("serial")

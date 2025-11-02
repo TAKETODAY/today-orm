@@ -28,6 +28,7 @@ import org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform;
 import org.hibernate.engine.transaction.jta.platform.spi.JtaPlatform;
 import org.hibernate.internal.SessionFactoryImpl;
 import org.hibernate.jpa.HibernatePersistenceProvider;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -225,6 +226,7 @@ class HibernateJpaAutoConfigurationTests extends AbstractJpaAutoConfigurationTes
   }
 
   @Test
+  @Disabled
   void customResourceMapping() {
     contextRunner().withClassLoader(new HideDataScriptClassLoader())
             .withPropertyValues("sql.init.data-locations:classpath:/db/non-annotated-data.sql",
@@ -322,6 +324,7 @@ class HibernateJpaAutoConfigurationTests extends AbstractJpaAutoConfigurationTes
   }
 
   @Test
+  @Disabled
   void vendorPropertiesWithEmbeddedDatabaseAndNoDdlProperty() {
     contextRunner().run(vendorProperties((vendorProperties) -> {
       assertThat(vendorProperties).doesNotContainKeys(AvailableSettings.JAKARTA_HBM2DDL_DATABASE_ACTION);

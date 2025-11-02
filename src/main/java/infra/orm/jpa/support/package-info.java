@@ -16,7 +16,7 @@
  */
 
 /**
- * Classes supporting the {@code cn.taketoday.orm.jpa} package.
+ * Classes supporting the {@code infra.orm.jpa} package.
  */
 @NullMarked
 package infra.orm.jpa.support;

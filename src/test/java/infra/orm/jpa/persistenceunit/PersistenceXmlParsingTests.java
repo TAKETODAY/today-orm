@@ -281,7 +281,7 @@ public class PersistenceXmlParsingTests {
     assertThat(url).isNull();
 
     url = PersistenceUnitReader.determinePersistenceUnitRootUrl(new ClassPathResource("/infra/orm/jpa/META-INF/persistence.xml"));
-    assertThat(url.toString().endsWith("/cn/taketoday/orm/jpa")).as("the containing folder should have been returned").isTrue();
+    assertThat(url.toString().endsWith("/infra/orm/jpa")).as("the containing folder should have been returned").isTrue();
   }
 
   @Test

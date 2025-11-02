@@ -25,6 +25,17 @@ import java.util.function.Consumer;
 
 import javax.sql.DataSource;
 
+import infra.aot.hint.MemberCategory;
+import infra.aot.hint.RuntimeHints;
+import infra.aot.test.generate.TestGenerationContext;
+import infra.context.ApplicationContextInitializer;
+import infra.context.annotation.AnnotationConfigApplicationContext;
+import infra.context.annotation.Bean;
+import infra.context.aot.ApplicationContextAotGenerator;
+import infra.context.support.GenericApplicationContext;
+import infra.core.io.ResourceLoader;
+import infra.core.test.tools.Compiled;
+import infra.core.test.tools.TestCompiler;
 import infra.orm.jpa.JpaVendorAdapter;
 import infra.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import infra.orm.jpa.domain.DriversLicense;
@@ -38,19 +49,8 @@ import infra.orm.jpa.domain.Person;
 import infra.orm.jpa.domain.PersonListener;
 import infra.orm.jpa.vendor.Database;
 import infra.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import infra.aot.hint.MemberCategory;
-import infra.aot.hint.RuntimeHints;
-import infra.aot.hint.predicate.RuntimeHintsPredicates;
-import infra.aot.test.generate.TestGenerationContext;
-import infra.context.ApplicationContextInitializer;
-import infra.context.annotation.AnnotationConfigApplicationContext;
-import infra.context.annotation.Bean;
-import infra.context.aot.ApplicationContextAotGenerator;
-import infra.context.support.GenericApplicationContext;
-import infra.core.io.ResourceLoader;
-import infra.core.test.tools.Compiled;
-import infra.core.test.tools.TestCompiler;
 
+import static infra.aot.hint.predicate.RuntimeHintsPredicates.reflection;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
@@ -83,27 +83,16 @@ class PersistenceManagedTypesBeanRegistrationAotProcessorTests {
     GenericApplicationContext context = new AnnotationConfigApplicationContext();
     context.registerBean(JpaDomainConfiguration.class);
     contributeHints(context, hints -> {
-      assertThat(RuntimeHintsPredicates.reflection().onType(DriversLicense.class)
-              .withMemberCategories(MemberCategory.DECLARED_FIELDS)).accepts(hints);
-      assertThat(RuntimeHintsPredicates.reflection().onType(Person.class)
-              .withMemberCategories(MemberCategory.DECLARED_FIELDS)).accepts(hints);
-      assertThat(RuntimeHintsPredicates.reflection().onType(PersonListener.class)
-              .withMemberCategories(MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_PUBLIC_METHODS))
-              .accepts(hints);
-      assertThat(RuntimeHintsPredicates.reflection().onType(Employee.class)
-              .withMemberCategories(MemberCategory.DECLARED_FIELDS)).accepts(hints);
-      assertThat(RuntimeHintsPredicates.reflection().onMethod(Employee.class, "preRemove"))
-              .accepts(hints);
-      assertThat(RuntimeHintsPredicates.reflection().onType(EmployeeId.class)
-              .withMemberCategories(MemberCategory.DECLARED_FIELDS)).accepts(hints);
-      assertThat(RuntimeHintsPredicates.reflection().onType(EmployeeLocationConverter.class)
-              .withMemberCategories(MemberCategory.INVOKE_DECLARED_CONSTRUCTORS)).accepts(hints);
-      assertThat(RuntimeHintsPredicates.reflection().onType(EmployeeCategoryConverter.class)
-              .withMemberCategories(MemberCategory.INVOKE_DECLARED_CONSTRUCTORS)).accepts(hints);
-      assertThat(RuntimeHintsPredicates.reflection().onType(EmployeeKindConverter.class)
-              .withMemberCategories(MemberCategory.INVOKE_DECLARED_CONSTRUCTORS)).accepts(hints);
-      assertThat(RuntimeHintsPredicates.reflection().onType(EmployeeLocation.class)
-              .withMemberCategories(MemberCategory.DECLARED_FIELDS)).accepts(hints);
+      assertThat(reflection().onType(DriversLicense.class).withMemberCategories(MemberCategory.ACCESS_DECLARED_FIELDS)).accepts(hints);
+      assertThat(reflection().onType(Person.class).withMemberCategories(MemberCategory.ACCESS_DECLARED_FIELDS)).accepts(hints);
+      assertThat(reflection().onType(PersonListener.class).withMemberCategories(MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_PUBLIC_METHODS)).accepts(hints);
+      assertThat(reflection().onType(Employee.class).withMemberCategories(MemberCategory.ACCESS_DECLARED_FIELDS)).accepts(hints);
+      assertThat(reflection().onMethodInvocation(Employee.class, "preRemove")).accepts(hints);
+      assertThat(reflection().onType(EmployeeId.class).withMemberCategories(MemberCategory.ACCESS_DECLARED_FIELDS)).accepts(hints);
+      assertThat(reflection().onType(EmployeeLocationConverter.class).withMemberCategories(MemberCategory.INVOKE_DECLARED_CONSTRUCTORS)).accepts(hints);
+      assertThat(reflection().onType(EmployeeCategoryConverter.class).withMemberCategories(MemberCategory.INVOKE_DECLARED_CONSTRUCTORS)).accepts(hints);
+      assertThat(reflection().onType(EmployeeKindConverter.class).withMemberCategories(MemberCategory.INVOKE_DECLARED_CONSTRUCTORS)).accepts(hints);
+      assertThat(reflection().onType(EmployeeLocation.class).withMemberCategories(MemberCategory.ACCESS_DECLARED_FIELDS)).accepts(hints);
     });
   }
 
@@ -112,7 +101,7 @@ class PersistenceManagedTypesBeanRegistrationAotProcessorTests {
     GenericApplicationContext context = new AnnotationConfigApplicationContext();
     context.registerBean(HibernateDomainConfiguration.class);
     contributeHints(context, hints ->
-            assertThat(RuntimeHintsPredicates.reflection().onType(CreationTimestampGeneration.class)
+            assertThat(reflection().onType(CreationTimestampGeneration.class)
                     .withMemberCategories(MemberCategory.INVOKE_DECLARED_CONSTRUCTORS)).accepts(hints));
   }
 
@@ -146,7 +135,7 @@ class PersistenceManagedTypesBeanRegistrationAotProcessorTests {
 
     @Override
     protected String packageToScan() {
-      return "cn.taketoday.orm.jpa.domain";
+      return "infra.orm.jpa.domain";
     }
   }
 
@@ -154,7 +143,7 @@ class PersistenceManagedTypesBeanRegistrationAotProcessorTests {
 
     @Override
     protected String packageToScan() {
-      return "cn.taketoday.orm.jpa.hibernate.domain";
+      return "infra.orm.jpa.hibernate.domain";
     }
   }
 

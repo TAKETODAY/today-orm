@@ -26,7 +26,7 @@
 	</persistence-unit>
 
 	<persistence-unit name="Test" transaction-type="RESOURCE_LOCAL">
-		<class>cn.taketoday.orm.jpa.testfixture.beans.TestBean</class>
+		<class>infra.beans.testfixture.TestBean</class>
 		<exclude-unlisted-classes />
 	</persistence-unit>
 

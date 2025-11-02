@@ -38,7 +38,7 @@ public class DefaultPersistenceUnitManagerTests {
 
   @Test
   public void defaultDomainWithScan() {
-    this.manager.setPackagesToScan("cn.taketoday.orm.jpa.domain");
+    this.manager.setPackagesToScan("infra.orm.jpa.domain");
     this.manager.setResourceLoader(new DefaultResourceLoader(
             disableIndex(getClass().getClassLoader())));
     testDefaultDomain();
@@ -46,7 +46,7 @@ public class DefaultPersistenceUnitManagerTests {
 
   @Test
   public void defaultDomainWithIndex() {
-    this.manager.setPackagesToScan("cn.taketoday.orm.jpa.domain");
+    this.manager.setPackagesToScan("infra.orm.jpa.domain");
     this.manager.setResourceLoader(new DefaultResourceLoader(
             index(getClass().getClassLoader(),
                     new ClassPathResource("today.components", Person.class))));
@@ -56,8 +56,8 @@ public class DefaultPersistenceUnitManagerTests {
   private void testDefaultDomain() {
     JpaPersistenceUnitInfo puInfo = buildDefaultPersistenceUnitInfo();
     assertThat(puInfo.getManagedClassNames()).contains(
-            "cn.taketoday.orm.jpa.domain.Person",
-            "cn.taketoday.orm.jpa.domain.DriversLicense");
+            "infra.orm.jpa.domain.Person",
+            "infra.orm.jpa.domain.DriversLicense");
   }
 
   private JpaPersistenceUnitInfo buildDefaultPersistenceUnitInfo() {

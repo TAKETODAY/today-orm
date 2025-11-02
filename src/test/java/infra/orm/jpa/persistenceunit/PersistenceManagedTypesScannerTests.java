@@ -39,7 +39,7 @@ class PersistenceManagedTypesScannerTests {
 
   @Test
   void scanPackageWithOnlyEntities() {
-    PersistenceManagedTypes managedTypes = this.scanner.scan("cn.taketoday.orm.jpa.domain");
+    PersistenceManagedTypes managedTypes = this.scanner.scan("infra.orm.jpa.domain");
     assertThat(managedTypes.getManagedClassNames()).containsExactlyInAnyOrder(
             Person.class.getName(), DriversLicense.class.getName(), Employee.class.getName(),
             EmployeeLocationConverter.class.getName());
@@ -48,9 +48,9 @@ class PersistenceManagedTypesScannerTests {
 
   @Test
   void scanPackageWithEntitiesAndManagedPackages() {
-    PersistenceManagedTypes managedTypes = this.scanner.scan("cn.taketoday.orm.jpa.domain2");
+    PersistenceManagedTypes managedTypes = this.scanner.scan("infra.orm.jpa.domain2");
     assertThat(managedTypes.getManagedClassNames()).containsExactlyInAnyOrder(User.class.getName());
-    assertThat(managedTypes.getManagedPackages()).containsExactlyInAnyOrder("cn.taketoday.orm.jpa.domain2");
+    assertThat(managedTypes.getManagedPackages()).containsExactlyInAnyOrder("infra.orm.jpa.domain2");
   }
 
   @Test

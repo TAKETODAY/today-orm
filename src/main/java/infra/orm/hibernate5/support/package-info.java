@@ -16,7 +16,7 @@
  */
 
 /**
- * Classes supporting the {@code cn.taketoday.orm.hibernate5} package.
+ * Classes supporting the {@code infra.orm.hibernate5} package.
  */
 @NullMarked
 package infra.orm.hibernate5.support;
